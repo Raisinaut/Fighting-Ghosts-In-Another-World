@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/REBORN - Lingering Evil OGG (Loopable).ogg-5d42c5c8fc79478b6a73c0cd2a528d87.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/REBORN - Lingering Evil OGG (Loopable).ogg"
+dest_files=[ "res://.import/REBORN - Lingering Evil OGG (Loopable).ogg-5d42c5c8fc79478b6a73c0cd2a528d87.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

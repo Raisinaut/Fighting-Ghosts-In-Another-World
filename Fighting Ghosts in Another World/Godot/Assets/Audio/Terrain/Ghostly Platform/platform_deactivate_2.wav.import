@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/platform_deactivate_2.wav-ad699a1528b64833e8038bda5a1420f2.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Terrain/Ghostly Platform/platform_deactivate_2.wav"
+dest_files=[ "res://.import/platform_deactivate_2.wav-ad699a1528b64833e8038bda5a1420f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

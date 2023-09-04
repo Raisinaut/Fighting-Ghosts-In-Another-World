@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Actors/SpawnArea.gd" type="Script" id=1]
+[ext_resource path="res://Actors/Spirits/Spirit_Basic.tscn" type="PackedScene" id=2]
+
+[node name="SpawnArea" type="ReferenceRect"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+enemy_to_spawn = ExtResource( 2 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

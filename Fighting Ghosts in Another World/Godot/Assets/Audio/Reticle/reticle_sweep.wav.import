@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/reticle_sweep.wav-6f6a03bdf93619ef83c7fb1395916c37.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Reticle/reticle_sweep.wav"
+dest_files=[ "res://.import/reticle_sweep.wav-6f6a03bdf93619ef83c7fb1395916c37.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

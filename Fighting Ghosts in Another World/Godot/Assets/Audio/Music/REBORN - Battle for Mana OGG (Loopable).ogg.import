@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/REBORN - Battle for Mana OGG (Loopable).ogg-50e33b8696bd3269f84625e967028a60.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/REBORN - Battle for Mana OGG (Loopable).ogg"
+dest_files=[ "res://.import/REBORN - Battle for Mana OGG (Loopable).ogg-50e33b8696bd3269f84625e967028a60.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=13.055

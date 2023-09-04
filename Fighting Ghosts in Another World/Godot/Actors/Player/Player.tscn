@@ -1,0 +1,328 @@
+[gd_scene load_steps=57 format=2]
+
+[ext_resource path="res://Assets/Textures/Characters/marta.png" type="Texture" id=1]
+[ext_resource path="res://Actors/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Actors/Player/PlayerSprite.gd" type="Script" id=3]
+[ext_resource path="res://Particles/FootstepDust.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/ParticleQueue.gd" type="Script" id=5]
+[ext_resource path="res://Combat/Hurtbox.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Textures/Attacks/reticle.png" type="Texture" id=7]
+[ext_resource path="res://Actors/Player/MovingReticle.gd" type="Script" id=8]
+[ext_resource path="res://Combat/PlayerAttacks/MagicOrb.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Textures/Characters/marta_magical.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Textures/Lights/circle1.png" type="Texture" id=11]
+[ext_resource path="res://Actors/Player/SFX.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Audio/Player Movement/Land.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Audio/Player Movement/Footsteps/concrete_step_2.wav" type="AudioStream" id=14]
+[ext_resource path="res://Actors/Player/MultiStreamPlayer2D.gd" type="Script" id=15]
+[ext_resource path="res://Assets/Audio/Player Movement/Footsteps/concrete_step_3.wav" type="AudioStream" id=16]
+[ext_resource path="res://Assets/Audio/Player Movement/Footsteps/concrete_step_4.wav" type="AudioStream" id=17]
+[ext_resource path="res://Assets/Audio/Player Movement/Footsteps/concrete_step_5.wav" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Audio/Player Movement/Jump.wav" type="AudioStream" id=19]
+[ext_resource path="res://Assets/Audio/Player Movement/Footsteps/concrete_step_1.wav" type="AudioStream" id=20]
+[ext_resource path="res://Assets/Audio/Player Movement/Footsteps/concrete_step_6.wav" type="AudioStream" id=21]
+[ext_resource path="res://Assets/Audio/Player Movement/Footsteps/concrete_step_7.wav" type="AudioStream" id=22]
+[ext_resource path="res://Assets/Audio/Player Movement/Footsteps/concrete_step_8.wav" type="AudioStream" id=23]
+[ext_resource path="res://Assets/Audio/Reticle/reticle_sweep.wav" type="AudioStream" id=24]
+[ext_resource path="res://Assets/Audio/Reticle/reticle_activate.wav" type="AudioStream" id=25]
+[ext_resource path="res://Assets/Audio/Orb/launch.wav" type="AudioStream" id=26]
+[ext_resource path="res://Assets/Audio/VariableStreamPlayer.gd" type="Script" id=27]
+[ext_resource path="res://Assets/Audio/Player Movement/Damaged.wav" type="AudioStream" id=28]
+[ext_resource path="res://Combat/Stats.gd" type="Script" id=29]
+
+[sub_resource type="CapsuleShape2D" id=35]
+radius = 5.0
+height = 6.0
+
+[sub_resource type="Shader" id=37]
+code = "shader_type canvas_item;
+
+uniform bool flash = false;
+uniform vec4 flash_exempt : hint_color;
+
+void fragment() {
+	vec4 previous_color = texture(TEXTURE, UV);
+	vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
+	vec4 new_color = previous_color;
+	if (flash == true)
+	{
+		if (previous_color != flash_exempt)
+		{
+			new_color = white_color
+		}
+	}
+	COLOR = new_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=36]
+shader = SubResource( 37 )
+shader_param/flash = false
+shader_param/flash_exempt = Color( 0.0705882, 0.0392157, 0.101961, 1 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 1 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 1 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 1 )
+region = Rect2( 352, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 1 )
+region = Rect2( 384, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 1 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 1 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 1 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 23 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "land",
+"speed": 14.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 17 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 34 ), SubResource( 33 ), SubResource( 32 ), SubResource( 31 ) ],
+"loop": true,
+"name": "run_backwards",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=26]
+radius = 4.0
+height = 6.0
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 7 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=29]
+animations = [ {
+"frames": [ SubResource( 27 ), SubResource( 28 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=30]
+radius = 4.0
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
+z_index = 100
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+projectile = ExtResource( 9 )
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource( 29 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 1, 1, 0.623529 )
+position = Vector2( 0, -8 )
+shape = SubResource( 35 )
+
+[node name="SFX2D" type="Node2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="SFX2D"]
+stream = ExtResource( 19 )
+volume_db = -1.0
+attenuation = 0.0473662
+bus = "With Reverb"
+area_mask = 4
+
+[node name="Land" type="AudioStreamPlayer2D" parent="SFX2D"]
+stream = ExtResource( 13 )
+attenuation = 0.0473662
+bus = "With Reverb"
+area_mask = 4
+
+[node name="Footstep" type="AudioStreamPlayer2D" parent="SFX2D"]
+volume_db = -8.0
+bus = "With Reverb"
+area_mask = 4
+script = ExtResource( 15 )
+audio_files = [ ExtResource( 20 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
+
+[node name="Launch" type="AudioStreamPlayer2D" parent="SFX2D"]
+position = Vector2( 0, -6 )
+stream = ExtResource( 26 )
+bus = "With Reverb"
+
+[node name="Damaged" type="AudioStreamPlayer2D" parent="SFX2D"]
+stream = ExtResource( 28 )
+volume_db = -4.0
+bus = "Without Reverb"
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 11 )
+texture_scale = 0.2
+mode = 2
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 36 )
+position = Vector2( 0, -8 )
+frames = SubResource( 5 )
+playing = true
+script = ExtResource( 3 )
+alternate_texture = ExtResource( 10 )
+
+[node name="FlashTimer" type="Timer" parent="AnimatedSprite"]
+one_shot = true
+
+[node name="ToggleTimer" type="Timer" parent="AnimatedSprite"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DustParticles" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.313726 )
+script = ExtResource( 5 )
+particle_scene = ExtResource( 4 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 6 )
+automatic_invincibility = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2( 0, -7 )
+shape = SubResource( 26 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MovingReticle" type="Node2D" parent="CanvasLayer"]
+show_behind_parent = true
+position = Vector2( 0, -6 )
+script = ExtResource( 8 )
+
+[node name="activate" type="AudioStreamPlayer" parent="CanvasLayer/MovingReticle"]
+stream = ExtResource( 25 )
+volume_db = -18.0
+bus = "Without Reverb"
+script = ExtResource( 27 )
+
+[node name="sweep" type="AudioStreamPlayer" parent="CanvasLayer/MovingReticle"]
+stream = ExtResource( 24 )
+volume_db = -26.0
+bus = "Without Reverb"
+
+[node name="DashedLine" type="Node2D" parent="CanvasLayer/MovingReticle"]
+
+[node name="Pivot" type="Position2D" parent="CanvasLayer/MovingReticle"]
+
+[node name="AttackOrigin" type="Position2D" parent="CanvasLayer/MovingReticle/Pivot"]
+
+[node name="Reticle" type="Area2D" parent="CanvasLayer/MovingReticle/Pivot"]
+position = Vector2( 48, 0 )
+collision_layer = 0
+collision_mask = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="CanvasLayer/MovingReticle/Pivot/Reticle"]
+frames = SubResource( 29 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/MovingReticle/Pivot/Reticle"]
+shape = SubResource( 30 )
+
+[connection signal="hp_depleted" from="Stats" to="." method="_on_Stats_hp_depleted"]
+[connection signal="animation_finished" from="AnimatedSprite" to="AnimatedSprite" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]

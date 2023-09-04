@@ -1,0 +1,138 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Music Editing_data" version="1.3.0" audacityversion="2.3.2" sel0="0.0000000000" sel1="69.8180272109" vpos="0" h="0.0000000000" zoom="28.9063946464" rate="44100.0" snapto="off" selectionformat="samples" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="ARTIST" value="Jonathan Shaw (www.jshaw.co.uk)"/>
+		<tag name="LOOPLENGTH" value="3294070"/>
+		<tag name="TITLE" value="&quot;Lingering Evil&quot;"/>
+		<tag name="YEAR" value="2020"/>
+		<tag name="ALBUM" value="RPG Orchestral Essentials (Reborn)"/>
+		<tag name="COMMENT" value="A royalty-free video game track composed by Jonathan Shaw (www.jshaw.co.uk)."/>
+		<tag name="GENRE" value="Video Game Music"/>
+		<tag name="LOOPSTART" value="487720"/>
+	</tags>
+	<wavetrack name="Mystical Town (Loop)" channel="0" linked="1" mute="0" solo="1" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="3078975">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808753.au" len="259736" min="-0.411428" max="0.361096" rms="0.076865"/>
+				</waveblock>
+				<waveblock start="259736">
+					<simpleblockfile filename="e08089ed.au" len="262144" min="-0.36057" max="0.350712" rms="0.081627"/>
+				</waveblock>
+				<waveblock start="521880">
+					<simpleblockfile filename="e0808096.au" len="262144" min="-0.411959" max="0.392609" rms="0.081131"/>
+				</waveblock>
+				<waveblock start="784024">
+					<simpleblockfile filename="e0808bd2.au" len="262144" min="-0.41662" max="0.44471" rms="0.085687"/>
+				</waveblock>
+				<waveblock start="1046168">
+					<simpleblockfile filename="e0808e7e.au" len="262144" min="-0.396892" max="0.385574" rms="0.090499"/>
+				</waveblock>
+				<waveblock start="1308312">
+					<simpleblockfile filename="e0808b5b.au" len="262144" min="-0.398255" max="0.436758" rms="0.098999"/>
+				</waveblock>
+				<waveblock start="1570456">
+					<simpleblockfile filename="e0808808.au" len="262144" min="-0.409862" max="0.399987" rms="0.092868"/>
+				</waveblock>
+				<waveblock start="1832600">
+					<simpleblockfile filename="e0808a6f.au" len="262144" min="-0.429775" max="0.447223" rms="0.089441"/>
+				</waveblock>
+				<waveblock start="2094744">
+					<simpleblockfile filename="e0808b52.au" len="262144" min="-0.416342" max="0.429649" rms="0.088634"/>
+				</waveblock>
+				<waveblock start="2356888">
+					<simpleblockfile filename="e0808447.au" len="262144" min="-0.407686" max="0.394004" rms="0.076284"/>
+				</waveblock>
+				<waveblock start="2619032">
+					<simpleblockfile filename="e08082db.au" len="262144" min="-0.34757" max="0.399452" rms="0.065998"/>
+				</waveblock>
+				<waveblock start="2881176">
+					<simpleblockfile filename="e0808745.au" len="197799" min="-0.34495" max="0.361696" rms="0.057167"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mystical Town (Loop)" channel="1" linked="0" mute="0" solo="1" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="3078975">
+				<waveblock start="0">
+					<simpleblockfile filename="e0800442.au" len="259736" min="-0.320068" max="0.369298" rms="0.073355"/>
+				</waveblock>
+				<waveblock start="259736">
+					<simpleblockfile filename="e0808245.au" len="262144" min="-0.349414" max="0.339322" rms="0.073033"/>
+				</waveblock>
+				<waveblock start="521880">
+					<simpleblockfile filename="e0808ab5.au" len="262144" min="-0.370965" max="0.346432" rms="0.071547"/>
+				</waveblock>
+				<waveblock start="784024">
+					<simpleblockfile filename="e0808dba.au" len="262144" min="-0.397296" max="0.385855" rms="0.072922"/>
+				</waveblock>
+				<waveblock start="1046168">
+					<simpleblockfile filename="e0808abd.au" len="262144" min="-0.388245" max="0.369974" rms="0.08469"/>
+				</waveblock>
+				<waveblock start="1308312">
+					<simpleblockfile filename="e0808850.au" len="262144" min="-0.393275" max="0.394553" rms="0.092435"/>
+				</waveblock>
+				<waveblock start="1570456">
+					<simpleblockfile filename="e0808544.au" len="262144" min="-0.383975" max="0.386984" rms="0.084912"/>
+				</waveblock>
+				<waveblock start="1832600">
+					<simpleblockfile filename="e0808ae5.au" len="262144" min="-0.348009" max="0.356348" rms="0.074224"/>
+				</waveblock>
+				<waveblock start="2094744">
+					<simpleblockfile filename="e08083fb.au" len="262144" min="-0.372736" max="0.355573" rms="0.075236"/>
+				</waveblock>
+				<waveblock start="2356888">
+					<simpleblockfile filename="e0808a4a.au" len="262144" min="-0.320335" max="0.383793" rms="0.062315"/>
+				</waveblock>
+				<waveblock start="2619032">
+					<simpleblockfile filename="e0800a2c.au" len="262144" min="-0.335678" max="0.340948" rms="0.055405"/>
+				</waveblock>
+				<waveblock start="2881176">
+					<simpleblockfile filename="e0800bd7.au" len="197799" min="-0.313119" max="0.339926" rms="0.051518"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="REBORN - Lingering Evil OGG (Loopable)" channel="0" linked="1" mute="1" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="941003">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808d01.au" len="262144" min="-0.769806" max="0.846008" rms="0.093592"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0808f71.au" len="262144" min="-0.774567" max="0.691864" rms="0.128396"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="e0808a85.au" len="262144" min="-0.41922" max="0.463593" rms="0.087786"/>
+				</waveblock>
+				<waveblock start="786432">
+					<simpleblockfile filename="e080863d.au" len="154571" min="-0.384888" max="0.412872" rms="0.105783"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="REBORN - Lingering Evil OGG (Loopable)" channel="1" linked="0" mute="1" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="941003">
+				<waveblock start="0">
+					<simpleblockfile filename="e080864a.au" len="262144" min="-0.90094" max="0.667725" rms="0.09008"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e08080d4.au" len="262144" min="-0.906647" max="0.891815" rms="0.145614"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="e0808eb7.au" len="262144" min="-0.438782" max="0.682709" rms="0.07798"/>
+				</waveblock>
+				<waveblock start="786432">
+					<simpleblockfile filename="e08087cb.au" len="154571" min="-0.439331" max="0.749176" rms="0.107569"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Textures/Environment/chandelier.png" type="Texture" id=1]
+[ext_resource path="res://Actors/Objects/Candle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Objects/Chain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Objects/Chandelier.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 1 )
+
+[node name="Chandelier" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Chain" parent="." instance=ExtResource( 3 )]
+
+[node name="CandleHolder" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="CandleHolder"]
+position = Vector2( 0, 8 )
+texture = ExtResource( 1 )
+
+[node name="Candles" type="Node2D" parent="CandleHolder"]
+
+[node name="Candle" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
+position = Vector2( -22, 13 )
+frame = 1
+
+[node name="Candle2" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
+position = Vector2( -16, 13 )
+frame = 1
+
+[node name="Candle3" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
+position = Vector2( -6, 13 )
+frame = 1
+
+[node name="Candle4" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
+position = Vector2( 6, 13 )
+frame = 1
+
+[node name="Candle5" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
+position = Vector2( 16, 13 )
+frame = 1
+
+[node name="Candle6" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
+position = Vector2( 22, 13 )
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CandleHolder"]
+position = Vector2( 0, 14 )
+shape = SubResource( 1 )
+one_way_collision = true

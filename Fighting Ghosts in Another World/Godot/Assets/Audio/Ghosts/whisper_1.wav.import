@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/whisper_1.wav-7fde7c15685cb91663e8b95b8aa87153.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Ghosts/whisper_1.wav"
+dest_files=[ "res://.import/whisper_1.wav-7fde7c15685cb91663e8b95b8aa87153.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

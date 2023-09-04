@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/REBORN - Tomorrow, We Die OGG (Loopable).ogg-b0c7a479ee9d5fe367100dba45545796.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/REBORN - Tomorrow, We Die OGG (Loopable).ogg"
+dest_files=[ "res://.import/REBORN - Tomorrow, We Die OGG (Loopable).ogg-b0c7a479ee9d5fe367100dba45545796.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=8.055

@@ -1,0 +1,351 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Actors/Camera/Camera.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/TempTerrain.gd" type="Script" id=3]
+[ext_resource path="res://Actors/Camera/CameraArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Platforms/PlatformGroup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Platforms/ghostly_platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Actors/Objects/Sconce.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Actors/Components/DeathTrigger.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Actors/Objects/Checkpoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/_LongLevelTest.gd" type="Script" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+extents = Vector2( 129, 12 )
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 129, 12 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.296089, 0.5, 0.703911, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.893855, 1, 1, 1, 1, 1, 1, 1, 0.860335, 1, 1, 1, 0 )
+
+[node name="_LongLevelTest" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0, 0, 0, 0 )
+
+[node name="Terrain" type="StaticBody2D" parent="."]
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="Terrain"]
+margin_left = 992.0
+margin_top = 112.0
+margin_right = 1144.0
+margin_bottom = 192.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Terrain"]
+margin_left = 1312.0
+margin_top = 168.0
+margin_right = 1544.0
+margin_bottom = 192.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="Terrain"]
+margin_left = 1544.0
+margin_top = 80.0
+margin_right = 1656.0
+margin_bottom = 192.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="Terrain"]
+margin_left = 1368.0
+margin_top = 80.0
+margin_right = 1480.0
+margin_bottom = 120.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Terrain"]
+margin_left = 448.0
+margin_top = 136.0
+margin_right = 608.0
+margin_bottom = 192.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect7" type="ColorRect" parent="Terrain"]
+margin_right = 32.0
+margin_bottom = 192.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect8" type="ColorRect" parent="Terrain"]
+margin_left = 32.0
+margin_top = 136.0
+margin_right = 192.0
+margin_bottom = 192.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect9" type="ColorRect" parent="Terrain"]
+margin_left = 192.0
+margin_top = 112.0
+margin_right = 408.0
+margin_bottom = 192.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Terrain"]
+margin_left = 608.0
+margin_top = 88.0
+margin_right = 768.0
+margin_bottom = 192.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 128 )
+
+[node name="Camera" parent="." instance=ExtResource( 1 )]
+process_mode = 0
+
+[node name="CameraAreas" type="Node" parent="."]
+
+[node name="CameraArea" parent="CameraAreas" instance=ExtResource( 4 )]
+visible = false
+modulate = Color( 1, 1, 1, 0.631373 )
+margin_right = 2480.0
+margin_bottom = 180.0
+border_width = 2.0
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="PlatformGroup" parent="Platforms" instance=ExtResource( 5 )]
+position = Vector2( 816, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup" instance=ExtResource( 6 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup" instance=ExtResource( 6 )]
+position = Vector2( -16, 0 )
+
+[node name="PlatformGroup2" parent="Platforms" instance=ExtResource( 5 )]
+position = Vector2( 880, 104 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup2" instance=ExtResource( 6 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup2" instance=ExtResource( 6 )]
+position = Vector2( -16, 0 )
+
+[node name="PlatformGroup3" parent="Platforms" instance=ExtResource( 5 )]
+position = Vector2( 944, 112 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup3" instance=ExtResource( 6 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup3" instance=ExtResource( 6 )]
+position = Vector2( -16, 0 )
+
+[node name="PlatformGroup4" parent="Platforms" instance=ExtResource( 5 )]
+position = Vector2( 576, 104 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup4" instance=ExtResource( 6 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup4" instance=ExtResource( 6 )]
+position = Vector2( -16, 0 )
+
+[node name="PlatformGroup6" parent="Platforms" instance=ExtResource( 5 )]
+position = Vector2( 1256, 104 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup6" instance=ExtResource( 6 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup6" instance=ExtResource( 6 )]
+position = Vector2( -16, 0 )
+
+[node name="PlatformGroup8" parent="Platforms" instance=ExtResource( 5 )]
+position = Vector2( 1528, 136 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup8" instance=ExtResource( 6 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup8" instance=ExtResource( 6 )]
+position = Vector2( -16, 0 )
+
+[node name="PlatformGroup9" parent="Platforms" instance=ExtResource( 5 )]
+position = Vector2( 1496, 104 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup9" instance=ExtResource( 6 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup9" instance=ExtResource( 6 )]
+position = Vector2( -16, 0 )
+
+[node name="PlatformGroup7" parent="Platforms" instance=ExtResource( 5 )]
+position = Vector2( 1192, 112 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup7" instance=ExtResource( 6 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup7" instance=ExtResource( 6 )]
+position = Vector2( -16, 0 )
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="Sconce" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 784, 64 )
+
+[node name="Sconce2" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 1128, 88 )
+
+[node name="Sconce5" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 1384, 56 )
+
+[node name="Sconce9" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 1464, 56 )
+
+[node name="Sconce10" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 1464, 144 )
+
+[node name="Sconce11" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 1560, 56 )
+
+[node name="Sconce12" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 1640, 56 )
+
+[node name="Sconce6" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 1048, 88 )
+
+[node name="Sconce3" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 968, 88 )
+
+[node name="Sconce4" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 456, 112 )
+
+[node name="Sconce18" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 536, 112 )
+
+[node name="Sconce7" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 624, 64 )
+
+[node name="Sconce8" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 704, 64 )
+
+[node name="Sconce13" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 376, 88 )
+
+[node name="Sconce14" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 216, 88 )
+
+[node name="Sconce15" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 296, 88 )
+
+[node name="Sconce16" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 64, 112 )
+
+[node name="Sconce17" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 144, 112 )
+
+[node name="Pits" type="Node" parent="."]
+
+[node name="DeathTrigger" parent="Pits" instance=ExtResource( 8 )]
+position = Vector2( 1144, 192 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pits/DeathTrigger"]
+position = Vector2( 120, 12 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pits/DeathTrigger"]
+position = Vector2( 632, 12 )
+shape = SubResource( 1 )
+
+[node name="DeathTrigger2" parent="Pits" instance=ExtResource( 8 )]
+position = Vector2( 768, 192 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pits/DeathTrigger2"]
+position = Vector2( 112, 12 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pits/DeathTrigger2"]
+position = Vector2( -344, 12 )
+shape = SubResource( 2 )
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 392, 112 )
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 1112, 112 )
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 752, 88 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="back" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.235294 )
+z_index = -100
+motion_scale = Vector2( 1.1, 1.1 )
+motion_mirroring = Vector2( 1000, 1000 )
+
+[node name="AmbientDust" type="CPUParticles2D" parent="ParallaxBackground/back"]
+position = Vector2( 504, 136 )
+amount = 1000
+lifetime = 4.0
+preprocess = 4.0
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 500 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 4.0
+scale_amount = 0.5
+color_ramp = SubResource( 3 )
+
+[node name="mid" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.133333 )
+motion_scale = Vector2( 1.2, 1.2 )
+motion_mirroring = Vector2( 1000, 1000 )
+
+[node name="AmbientDust" type="CPUParticles2D" parent="ParallaxBackground/mid"]
+position = Vector2( 504, 136 )
+amount = 1000
+lifetime = 4.0
+preprocess = 4.0
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 500 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 4.0
+color_ramp = SubResource( 3 )
+
+[node name="font" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.0392157 )
+motion_scale = Vector2( 1.4, 1.4 )
+motion_mirroring = Vector2( 1000, 1000 )
+
+[node name="AmbientDust" type="CPUParticles2D" parent="ParallaxBackground/font"]
+position = Vector2( 504, 136 )
+amount = 1000
+lifetime = 4.0
+preprocess = 4.0
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 500 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 4.0
+scale_amount = 1.5
+color_ramp = SubResource( 3 )

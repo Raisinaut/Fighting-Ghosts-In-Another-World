@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Mystical Town (Loop).ogg-af8933a80ddac657fa988f321a912616.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Mystical Town (Loop).ogg"
+dest_files=[ "res://.import/Mystical Town (Loop).ogg-af8933a80ddac657fa988f321a912616.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
