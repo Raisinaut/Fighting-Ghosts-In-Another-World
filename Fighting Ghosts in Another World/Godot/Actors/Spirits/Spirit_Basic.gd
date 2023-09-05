@@ -15,10 +15,10 @@ var velocity := Vector2.ZERO
 var knockback := Vector2.ZERO
 var target : Node2D = null
 # Movement Parameters
-var max_speed := 30
+var max_speed := 50
 var max_chase_distance := 300
 
-var acceleration := 15
+var acceleration := 20
 var friction := 15
 var stun_duration := 0.5
 var time_since_spawn := 0.0
@@ -30,7 +30,6 @@ enum STATES {
 	CHASE,
 	RETURN
 }
-
 
 
 func _ready():
@@ -73,7 +72,6 @@ func fade_out(duration) -> SceneTreeTween:
 
 
 func _physics_process(delta):
-	print( target)
 	time_since_spawn += delta
 	var oscillator = sin(time_since_spawn * oscillation_rate)
 	
@@ -89,11 +87,11 @@ func _physics_process(delta):
 	if not stunTimer.is_stopped():
 		body.speed_scale = range_lerp(stunTimer.time_left, stun_duration, 0, 1, 0.2)
 	
+	
 	# Move
 	if target and stunTimer.is_stopped():
 		var direction_to_target = global_position.direction_to(target.global_position)
 		velocity = velocity.move_toward(direction_to_target * max_speed * max(oscillator, 0.5), acceleration * delta)
-		
 		# Flip sprites
 		if global_position.direction_to(target.global_position).x < 0:
 			for s in sprites.get_children():
@@ -101,6 +99,12 @@ func _physics_process(delta):
 		else:
 			for s in sprites.get_children():
 				s.flip_h = false
+				
+		# Return if beyond max chase distance
+		var chase_distance = global_position.distance_to(spawnPosition.global_position)
+		print(chase_distance)
+		if chase_distance > max_chase_distance:
+			set_state(STATES.RETURN)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	
@@ -112,12 +116,10 @@ func set_state(new_state):
 	state = new_state
 	match(state):
 		STATES.WAIT:
-			print("wait")
+			pass
 		STATES.CHASE:
-			print("chase")
 			target = GlobalEnemyLogic.player_node
 		STATES.RETURN:
-			print("return")
 			# reset target
 			target = null
 			# fade out

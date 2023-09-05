@@ -66,5 +66,4 @@ func instance_under_root(scene : PackedScene):
 
 
 func _on_VisibilityNotifier2D_screen_exited():
-	print("orb left screen. freed")
 	queue_free()
