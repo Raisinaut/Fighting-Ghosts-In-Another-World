@@ -2,7 +2,8 @@
 class_name HitBox
 extends Area2D
 
-signal detected
+#warning-ignore:UNUSED_SIGNAL
+signal detected # not ideal, but signal is triggered from the hurtbox class >_>
 
 export var damage := 1
 export var knockback := 10

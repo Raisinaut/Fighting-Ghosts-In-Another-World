@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Textures/Spirits/hand behind.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Textures/Spirits/hand front.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Audio/Ghosts/whisper_1.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Audio/Ghosts/whisper_2.wav" type="AudioStream" id=10]
 [ext_resource path="res://Actors/Components/PlayerDetection.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Actors/Spirits/SoftCollision.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -137,10 +138,13 @@ animations = [ {
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id=10]
-radius = 9.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id=11]
 radius = 64.0
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 16.0
 
 [node name="Spirit_Basic" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -195,7 +199,6 @@ shape = SubResource( 4 )
 collision_layer = 128
 collision_mask = 0
 script = ExtResource( 7 )
-damage = null
 knockback = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
@@ -221,6 +224,14 @@ max_distance = 400.0
 bus = "With Reverb"
 script = ExtResource( 8 )
 pitch_variance = 0.1
+
+[node name="SoftCollision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoftCollision"]
+shape = SubResource( 12 )
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]
 [connection signal="timeout" from="AggroTimer" to="." method="_on_AggroTimer_timeout"]

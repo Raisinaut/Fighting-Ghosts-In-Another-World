@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var spawnPosition = $SpawnPosition
 onready var stats = $Stats
 onready var playerDetection = $PlayerDetection
+onready var softCollision = $SoftCollision
 onready var sprites = $Sprites
 onready var stunTimer = $StunTimer
 onready var aggroTimer = $AggroTimer
@@ -14,11 +15,13 @@ var rng = RandomNumberGenerator.new()
 var velocity := Vector2.ZERO
 var knockback := Vector2.ZERO
 var target : Node2D = null
+var revealed := false setget set_revealed
 # Movement Parameters
 var max_speed := 50
 var max_chase_distance := 300
+var max_target_distance := 200
 
-var acceleration := 20
+var acceleration := 25
 var friction := 15
 var stun_duration := 0.5
 var time_since_spawn := 0.0
@@ -33,6 +36,8 @@ enum STATES {
 
 
 func _ready():
+	# make invincible and invisible till found
+	set_revealed(false)
 	# save spawn position
 	spawnPosition.set_as_toplevel(true)
 	spawnPosition.global_position = global_position
@@ -40,8 +45,8 @@ func _ready():
 	rng.randomize()
 	oscillation_rate += rng.randf_range(0, 1)
 	stats.connect("hp_depleted", self, "defeated")
-	# reveal self
-	fade_in(2)
+	
+
 
 # returns tween to allow yielding
 func fade_in(duration) -> SceneTreeTween:
@@ -90,7 +95,8 @@ func _physics_process(delta):
 	
 	# Move
 	if target and stunTimer.is_stopped():
-		var direction_to_target = global_position.direction_to(target.global_position)
+		var chase_height_offset := Vector2(0, -8)
+		var direction_to_target = global_position.direction_to(target.global_position + chase_height_offset)
 		velocity = velocity.move_toward(direction_to_target * max_speed * max(oscillator, 0.5), acceleration * delta)
 		# Flip sprites
 		if global_position.direction_to(target.global_position).x < 0:
@@ -100,14 +106,15 @@ func _physics_process(delta):
 			for s in sprites.get_children():
 				s.flip_h = false
 				
-		# Return if beyond max chase distance
+		# Return if beyond max chase distance or target is too far
 		var chase_distance = global_position.distance_to(spawnPosition.global_position)
-		print(chase_distance)
-		if chase_distance > max_chase_distance:
+		var target_distance = global_position.distance_to(target.global_position)
+		if chase_distance > max_chase_distance or target_distance > max_target_distance:
 			set_state(STATES.RETURN)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	
+	velocity += softCollision.get_push_vector() * delta * 10
 	velocity = move_and_slide(velocity)
 
 
@@ -119,22 +126,34 @@ func set_state(new_state):
 			pass
 		STATES.CHASE:
 			target = GlobalEnemyLogic.player_node
+			# Once encountered don't stay hidden at spawn point
+			if not revealed:
+				set_revealed(true)
 		STATES.RETURN:
+			# reset aggro timer
+			aggroTimer.stop()
 			# reset target
 			target = null
 			# fade out
-			var fade_tween = fade_out(1)
-			yield(fade_tween, "finished")
+			yield(fade_out(1), "finished")
 			# teleport back
 			global_position = spawnPosition.global_position
 			# reset velocity
 			velocity = Vector2.ZERO
 			# fade in
-			fade_tween = fade_in(1)
-			yield(fade_tween, "finished")
-			
+			yield(fade_in(1), "finished")
+			# switch to wait
 			set_state(STATES.WAIT)
 
+
+func set_revealed(new_state):
+	revealed = new_state
+	if revealed:
+		hurtbox.set_invincible(false)
+		yield (fade_in(2), "finished")
+	else:
+		modulate = Color.transparent
+		hurtbox.set_invincible(true)
 
 ## Hitbox interactions ##
 func take_damage(amount):
@@ -143,11 +162,12 @@ func take_damage(amount):
 		target = GlobalEnemyLogic.player_node
 		aggroTimer.start()
 	stats.hp -= amount
-	if stats.hp > 0:
+	print(stats.hp)
+	if not is_defeated():
 		$HitSFX.play_at_random_pitch()
 
 func take_knockback(amount : float, knockback_vec : Vector2):
-	knockback += knockback_vec * amount
+	knockback = knockback_vec * amount
 	stunTimer.start(stun_duration)
 	body.play("shake")
 
@@ -157,11 +177,12 @@ func _on_StunTimer_timeout():
 
 ## Target Management ##
 func _on_PlayerDetection_body_entered(_body):
-	set_state(STATES.CHASE)
+	if state != STATES.CHASE:
+		set_state(STATES.CHASE)
 func _on_PlayerDetection_body_exited(_body):
 	aggroTimer.start()
 func _on_AggroTimer_timeout():
-	if not playerDetection.overlaps_body(target):
+	if target and not playerDetection.overlaps_body(target):
 		set_state(STATES.RETURN)
 
 

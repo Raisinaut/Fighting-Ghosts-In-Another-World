@@ -1,17 +1,20 @@
 extends Camera2D
 
-export(float, 0.5, 5.0, 0.05)var zoom_speed = 2
+export(float, 0.5, 5.0, 0.05) var zoom_speed = 2.0
 
 onready var screenShake = $ScreenShake
+onready var player_node = get_tree().get_nodes_in_group("Player")[0]
 
 var current_area = null
 
+
+func _ready():
+	player_node.connect("damaged", self, "small_shake")
 
 func small_shake() -> void:
 	screenShake.start(0.15, 20, 4, 0)
 
 func _physics_process(_delta):
-	var player_node = get_tree().get_nodes_in_group("Player")[0]
 	global_position = player_node.global_position
 
 func _on_AreaDetection_area_entered(area):

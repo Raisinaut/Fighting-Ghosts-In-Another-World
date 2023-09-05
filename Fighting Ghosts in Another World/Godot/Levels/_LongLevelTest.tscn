@@ -96,7 +96,7 @@ margin_bottom = 192.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1040, 96 )
+position = Vector2( 56, 128 )
 
 [node name="Camera" parent="." instance=ExtResource( 1 )]
 process_mode = 0
@@ -296,14 +296,17 @@ position = Vector2( 752, 88 )
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Spirit_Basic" parent="Enemies" instance=ExtResource( 11 )]
-position = Vector2( 136, 112 )
-
 [node name="Spirit_Basic2" parent="Enemies" instance=ExtResource( 11 )]
-position = Vector2( 648, 72 )
+position = Vector2( 688, 72 )
+
+[node name="Spirit_Basic4" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 728, 72 )
 
 [node name="Spirit_Basic3" parent="Enemies" instance=ExtResource( 11 )]
-position = Vector2( 432, 104 )
+position = Vector2( 328, 96 )
+
+[node name="Spirit_Basic6" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 344, 72 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

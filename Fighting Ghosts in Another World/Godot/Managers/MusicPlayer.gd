@@ -11,7 +11,7 @@ onready var currentSong = $CurrentSong
 onready var volume_default = currentSong.volume_db
 
 var volume_tween : SceneTreeTween = null
-
+var _discard = null
 
 func play_song(new_song : AudioStream):
 	if currentSong.playing:
@@ -25,7 +25,7 @@ func play_song(new_song : AudioStream):
 # fade audio
 func end_song():
 	volume_tween = create_tween()
-	volume_tween.set_ease(Tween.EASE_IN)
-	volume_tween.set_trans(Tween.TRANS_CIRC)
-	volume_tween.tween_property(currentSong, "volume_db", -80, fade_time)
+	_discard = volume_tween.set_ease(Tween.EASE_IN)
+	_discard = volume_tween.set_trans(Tween.TRANS_CIRC)
+	_discard = volume_tween.tween_property(currentSong, "volume_db", -80, fade_time)
 	yield(volume_tween, "finished")
