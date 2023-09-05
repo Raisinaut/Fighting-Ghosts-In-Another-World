@@ -10,7 +10,7 @@ var current_area = null
 func small_shake() -> void:
 	screenShake.start(0.15, 20, 4, 0)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var player_node = get_tree().get_nodes_in_group("Player")[0]
 	global_position = player_node.global_position
 

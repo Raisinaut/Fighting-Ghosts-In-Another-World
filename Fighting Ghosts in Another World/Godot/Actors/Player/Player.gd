@@ -49,6 +49,7 @@ var state = STATES.MOVE setget set_state
 
 func _ready():
 	CheckpointManager.spawn_location = global_position
+	GlobalEnemyLogic.set_player_node(self)
 
 func _physics_process(delta):
 	match(state):

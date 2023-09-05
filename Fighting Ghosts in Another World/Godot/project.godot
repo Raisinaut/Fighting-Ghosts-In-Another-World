@@ -106,6 +106,7 @@ config/icon="res://icon.png"
 
 CheckpointManager="*res://Managers/CheckpointManager.gd"
 MusicPlayer="*res://Managers/MusicPlayer.tscn"
+GlobalEnemyLogic="*res://Managers/GlobalEnemyLogic.tscn"
 
 [display]
 

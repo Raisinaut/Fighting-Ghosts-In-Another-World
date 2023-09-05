@@ -140,20 +140,26 @@ radius = 12.0
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id=11]
-radius = 320.1
+radius = 64.0
 
 [node name="Spirit_Basic" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 5 )
 
+[node name="SpawnPosition" type="Position2D" parent="."]
+
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
+[node name="AggroTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [node name="Stats" type="Node" parent="."]
 script = ExtResource( 6 )
-hp = 2
+init_hp = 2
 
 [node name="PositionAnimator" type="AnimationPlayer" parent="."]
 autoplay = "default"
@@ -198,13 +204,13 @@ shape = SubResource( 10 )
 [node name="PlayerDetection" parent="." instance=ExtResource( 11 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-visible = false
 shape = SubResource( 11 )
 
 [node name="DeafeatedSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
 volume_db = -3.0
 max_distance = 400.0
+bus = "With Reverb"
 script = ExtResource( 8 )
 pitch_variance = 0.1
 
@@ -212,9 +218,13 @@ pitch_variance = 0.1
 stream = ExtResource( 10 )
 volume_db = 1.0
 max_distance = 400.0
+bus = "With Reverb"
 script = ExtResource( 8 )
 pitch_variance = 0.1
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]
+[connection signal="timeout" from="AggroTimer" to="." method="_on_AggroTimer_timeout"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_PlayerDetection_body_exited"]
 
 [editable path="PlayerDetection"]

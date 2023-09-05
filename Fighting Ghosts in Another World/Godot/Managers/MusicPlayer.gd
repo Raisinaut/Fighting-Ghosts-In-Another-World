@@ -24,7 +24,7 @@ func play_song(new_song : AudioStream):
 
 # fade audio
 func end_song():
-	var volume_tween = create_tween()
+	volume_tween = create_tween()
 	volume_tween.set_ease(Tween.EASE_IN)
 	volume_tween.set_trans(Tween.TRANS_CIRC)
 	volume_tween.tween_property(currentSong, "volume_db", -80, fade_time)
