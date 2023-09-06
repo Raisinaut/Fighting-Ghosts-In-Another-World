@@ -3,9 +3,10 @@ extends AnimatedSprite
 
 var rng = RandomNumberGenerator.new()
 var foreground = false setget set_foreground
-
+var lit := true
 
 func _ready():
+	$Light2D.visible = lit
 	rng.randomize()
 	var anim_frame_count = frames.get_frame_count("default")
 	frame = rng.randi_range(0, anim_frame_count - 1)

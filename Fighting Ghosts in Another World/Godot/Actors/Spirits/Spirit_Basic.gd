@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal defeated
+
 onready var spawnPosition = $SpawnPosition
 onready var stats = $Stats
 onready var playerDetection = $PlayerDetection
@@ -16,6 +18,7 @@ var velocity := Vector2.ZERO
 var knockback := Vector2.ZERO
 var target : Node2D = null
 var revealed := false setget set_revealed
+var aggressive := false
 # Movement Parameters
 var max_speed := 50
 var max_chase_distance := 300
@@ -36,8 +39,10 @@ enum STATES {
 
 
 func _ready():
-	# make invincible and invisible till found
 	set_revealed(false)
+	if aggressive:
+		set_state(STATES.CHASE)
+		set_revealed(true)
 	# save spawn position
 	spawnPosition.set_as_toplevel(true)
 	spawnPosition.global_position = global_position
@@ -45,13 +50,13 @@ func _ready():
 	rng.randomize()
 	oscillation_rate += rng.randf_range(0, 1)
 	stats.connect("hp_depleted", self, "defeated")
-	
 
 
 # returns tween to allow yielding
 func fade_in(duration) -> SceneTreeTween:
 	# disable damage
 	hitbox.set_disabled(true)
+	hurtbox.set_invincible(false)
 	# animate fade
 	var t = create_tween()
 	t.set_ease(Tween.EASE_IN)
@@ -60,10 +65,6 @@ func fade_in(duration) -> SceneTreeTween:
 	if is_defeated():
 		# return if defeated before finished fading in
 		return null
-		
-	hurtbox.set_invincible(false)
-	hitbox.set_disabled(false)
-	
 	return t
 
 # returns tween to allow yielding
@@ -135,6 +136,7 @@ func set_state(new_state):
 			# reset target
 			target = null
 			# fade out
+			hitbox.set_disabled(true)
 			yield(fade_out(1), "finished")
 			# teleport back
 			global_position = spawnPosition.global_position
@@ -142,6 +144,7 @@ func set_state(new_state):
 			velocity = Vector2.ZERO
 			# fade in
 			yield(fade_in(1), "finished")
+			hitbox.set_disabled(false)
 			# switch to wait
 			set_state(STATES.WAIT)
 
@@ -150,9 +153,11 @@ func set_revealed(new_state):
 	revealed = new_state
 	if revealed:
 		hurtbox.set_invincible(false)
-		yield (fade_in(2), "finished")
+		yield (fade_in(1.5), "finished")
+		hitbox.set_disabled(false)
 	else:
 		modulate = Color.transparent
+		hitbox.set_disabled(true)
 		hurtbox.set_invincible(true)
 
 ## Hitbox interactions ##
@@ -162,7 +167,6 @@ func take_damage(amount):
 		target = GlobalEnemyLogic.player_node
 		aggroTimer.start()
 	stats.hp -= amount
-	print(stats.hp)
 	if not is_defeated():
 		$HitSFX.play_at_random_pitch()
 
@@ -180,7 +184,8 @@ func _on_PlayerDetection_body_entered(_body):
 	if state != STATES.CHASE:
 		set_state(STATES.CHASE)
 func _on_PlayerDetection_body_exited(_body):
-	aggroTimer.start()
+	if not aggressive:
+		aggroTimer.start()
 func _on_AggroTimer_timeout():
 	if target and not playerDetection.overlaps_body(target):
 		set_state(STATES.RETURN)
@@ -196,6 +201,7 @@ func defeated():
 	yield(fade_tween, "finished")
 	if $DeafeatedSFX.playing:
 		yield($DeafeatedSFX, "finished")
+	emit_signal("defeated")
 	queue_free()
 
 

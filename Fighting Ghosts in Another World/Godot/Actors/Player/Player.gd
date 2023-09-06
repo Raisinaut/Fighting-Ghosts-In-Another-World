@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal damaged
+signal died
 
 const BULLET_TIME_SCALE = 0.1
 const FRAME_FREEZE_SCALE = 0.06
@@ -13,6 +14,7 @@ onready var dustParticles = $DustParticles
 onready var movingReticle = $CanvasLayer/MovingReticle
 onready var collisionShape = $CollisionShape2D
 onready var sfx2d = $SFX2D
+onready var hurtbox = $HurtBox
 
 export(int, 0, 200, 5) var move_speed := 80
 export(int, 200, 1000, 10) var move_accel := 2000
@@ -31,7 +33,7 @@ var gravity = gravity_normal
 var velocity := Vector2.ZERO
 var knockback := Vector2.ZERO
 var input_direction : float = 0
-var frame_freeze := false setget set_frame_freeze
+var frame_freeze := false
 var frame_freeze_timer : SceneTreeTimer = null # holds the current frame freeze timer
 var just_jumped := false # for coyote time
 var just_damaged := false # resets to false once landed
@@ -40,8 +42,9 @@ var bullet_time = false setget set_bullet_time
 
 enum STATES {
 	MOVE,
-	DEAD,
-	RESPAWN
+	FELL,
+	RESPAWN,
+	DEAD
 }
 var state = STATES.MOVE setget set_state
 
@@ -161,24 +164,24 @@ func _physics_process(delta):
 func set_state(s):
 	state = s
 	match(state):
-		STATES.DEAD:
-			print("Dead")
-			
-			hide() # PLACEHOLDER
-			
+		STATES.FELL:
+			print("Fell")
 			input_direction = 0
 			velocity = Vector2.ZERO
 			knockback = Vector2.ZERO
 			movingReticle.set_enabled(false)
-			# play death animation
-			# wait until animation is finished
-			set_state(STATES.RESPAWN)
+			take_damage(1)
+			if $Stats.hp > 0:
+				set_state(STATES.RESPAWN)
+#			else:
+#				set_state(STATES.DEAD)
+			hide() # PLACEHOLDER
 			
 		STATES.RESPAWN:
 			print("Respawn")
 			# disable all collision
 			collisionShape.set_deferred("disabled", true)
-			$HurtBox.set_invincible(true)
+			hurtbox.set_invincible(true)
 			# tween global_position to last checkpoint
 			var t = create_tween()
 			t.set_ease(Tween.EASE_IN_OUT)
@@ -189,18 +192,24 @@ func set_state(s):
 			# wait until animation is finished
 			# enable all collision
 			collisionShape.set_deferred("disabled", false)
-			$HurtBox.set_invincible(false)
-			$Stats.set_hp($Stats.init_hp)
+#			hurtbox.set_invincible(false) # <<<<<<<<<<<<< uncomment if damage is not taken on fall
+#			$Stats.set_hp($Stats.init_hp)
 			
 			show() # PLACEHOLDER
 			
 			set_state(STATES.MOVE)
+		
+		STATES.DEAD:
+			print("dead")
+			collisionShape.set_deferred("disabled", true)
+			hurtbox.set_invincible(true)
+			# play death animation
+			emit_signal("died")
 
 
 # Sets input direction and starts buffer timers
 func _unhandled_input(event):
-	
-	if state == STATES.DEAD or state == STATES.RESPAWN:
+	if state != STATES.MOVE:
 		return
 	
 	# Throw
@@ -230,21 +239,25 @@ func _unhandled_input(event):
 
 
 func take_damage(amount):
+	if state == STATES.DEAD:
+		return
+		
+	print("damaged")
 	# check before setting hp
 	# only flash if not dead
 	if $Stats.hp - amount > 0:
-		sprite.flash($HurtBox.invincibilty_duration)
+		sprite.flash(hurtbox.invincibilty_duration)
 	emit_signal("damaged")
 	$Stats.set_hp($Stats.hp - amount)
 	sfx2d.play_at_random_pitch(sfx2d.damaged)
 	set_bullet_time(false)
+	set_frame_freeze(true)
 	just_damaged = true
 
 
 # sets knockback dependent on current velocity direction
 # matching directions results in less knockback to cap speed changes
 func take_knockback(_amount : float, knockback_vec : Vector2):
-#	print("knockback during ", state)
 	if state != STATES.MOVE:
 		return
 	
@@ -254,13 +267,11 @@ func take_knockback(_amount : float, knockback_vec : Vector2):
 	knockback.y = -150
 	if velocity.y < 0:
 		knockback.y /= 2
-	set_frame_freeze(true)
 
 
-func set_frame_freeze(new_state):
+func set_frame_freeze(new_state, duration : float = 0.4):
 	frame_freeze = new_state
-	
-	var duration = 0.4
+	print("frame freeze")
 	Engine.time_scale = FRAME_FREEZE_SCALE
 	frame_freeze_timer = get_tree().create_timer(duration * Engine.time_scale)
 	yield(frame_freeze_timer, "timeout")

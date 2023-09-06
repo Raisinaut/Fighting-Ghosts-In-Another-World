@@ -9,4 +9,4 @@ centered = false
 
 [node name="Candle" parent="." instance=ExtResource( 2 )]
 position = Vector2( 6, 3 )
-frame = 3
+frame = 2

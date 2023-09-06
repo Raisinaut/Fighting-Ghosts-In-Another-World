@@ -44,6 +44,7 @@ offset = Vector2( 0, -4 )
 script = ExtResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 position = Vector2( 0, -8 )
 texture = SubResource( 6 )
 texture_scale = 0.4

@@ -31,6 +31,7 @@ func _on_SpawnTimer_timeout():
 		var enemy_inst : Node2D = enemy_to_spawn.instance()
 		call_deferred("add_child", enemy_inst)
 		enemy_inst.global_position = offset
+		enemy_inst.aggressive = true
 		enemy_inst.add_to_group(self.name)
 	start_timer_varied()
 
