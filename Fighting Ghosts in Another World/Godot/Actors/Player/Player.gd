@@ -52,7 +52,7 @@ var state = STATES.MOVE setget set_state
 
 func _ready():
 	CheckpointManager.spawn_location = global_position
-	GlobalEnemyLogic.set_player_node(self)
+	GlobalEnemyLogic.player_node = self
 
 func _physics_process(delta):
 	match(state):
@@ -181,7 +181,7 @@ func set_state(s):
 			print("Respawn")
 			# disable all collision
 			collisionShape.set_deferred("disabled", true)
-			hurtbox.set_invincible(true)
+			hurtbox.start_invincibility()
 			# tween global_position to last checkpoint
 			var t = create_tween()
 			t.set_ease(Tween.EASE_IN_OUT)
@@ -205,6 +205,7 @@ func set_state(s):
 			hurtbox.set_invincible(true)
 			# play death animation
 			emit_signal("died")
+			SceneChanger.reload_current_scene()
 
 
 # Sets input direction and starts buffer timers
@@ -241,8 +242,6 @@ func _unhandled_input(event):
 func take_damage(amount):
 	if state == STATES.DEAD:
 		return
-		
-	print("damaged")
 	# check before setting hp
 	# only flash if not dead
 	if $Stats.hp - amount > 0:
@@ -253,6 +252,8 @@ func take_damage(amount):
 	set_bullet_time(false)
 	set_frame_freeze(true)
 	just_damaged = true
+	
+	print("HP remaining: ", $Stats.hp)
 
 
 # sets knockback dependent on current velocity direction

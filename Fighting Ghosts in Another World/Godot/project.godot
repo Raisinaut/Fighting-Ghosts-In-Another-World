@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fighting Ghosts in Another World"
-run/main_scene="res://Levels/_LongLevelTest.tscn"
+run/main_scene="res://Managers/Startup.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -107,6 +107,8 @@ config/icon="res://icon.png"
 CheckpointManager="*res://Managers/CheckpointManager.gd"
 MusicPlayer="*res://Managers/MusicPlayer.tscn"
 GlobalEnemyLogic="*res://Managers/GlobalEnemyLogic.tscn"
+SceneChanger="*res://Managers/Scene Changer/SceneChanger.tscn"
+ProgressManager="*res://Managers/ProgressManager.tscn"
 
 [display]
 

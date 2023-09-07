@@ -1,6 +1,6 @@
 extends Node
 
-export var fade_time : float = 4
+export var fade_time : float = 2
 
 export var exploring : AudioStream = null
 export var foreboding : AudioStream = null
@@ -14,10 +14,13 @@ var volume_tween : SceneTreeTween = null
 var _discard = null
 
 func play_song(new_song : AudioStream):
+	if new_song == currentSong.stream:
+		return
+	if volume_tween:
+		volume_tween.kill()
 	if currentSong.playing:
-		end_song()
+		currentSong.stop()
 	# play new song
-	currentSong.stop()
 	currentSong.volume_db = volume_default
 	currentSong.stream = new_song
 	currentSong.play()
@@ -29,3 +32,4 @@ func end_song():
 	_discard = volume_tween.set_trans(Tween.TRANS_CIRC)
 	_discard = volume_tween.tween_property(currentSong, "volume_db", -80, fade_time)
 	yield(volume_tween, "finished")
+	currentSong.stop()

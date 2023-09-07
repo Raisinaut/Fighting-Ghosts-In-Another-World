@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Actors/Camera/Camera.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/TempTerrain.gd" type="Script" id=3]
-[ext_resource path="res://Actors/Camera/CameraArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Actors/Platforms/PlatformGroup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Actors/Platforms/ghostly_platform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Actors/Objects/Sconce.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Actors/Components/DeathTrigger.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Actors/Objects/Checkpoint.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Levels/_LongLevelTest.gd" type="Script" id=10]
-[ext_resource path="res://Actors/Spirits/Spirit_Basic.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Actors/Objects/Barricade.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Actors/Spirits/Spirit_Basic.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Camera/CameraArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Platforms/ghostly_platform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Camera/Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Objects/Checkpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Actors/Objects/Barricade.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Actors/Components/Pit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Actors/Objects/Sconce.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Actors/Platforms/PlatformGroup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/TempTerrain.gd" type="Script" id=11]
+[ext_resource path="res://Levels/level.gd" type="Script" id=12]
+[ext_resource path="res://Actors/Portal.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
@@ -25,15 +26,23 @@ extents = Vector2( 129, 12 )
 offsets = PoolRealArray( 0, 0.296089, 0.5, 0.703911, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.893855, 1, 1, 1, 1, 1, 1, 1, 0.860335, 1, 1, 1, 0 )
 
-[node name="_LongLevelTest" type="Node2D"]
-script = ExtResource( 10 )
+[node name="level_1" type="Node2D"]
+script = ExtResource( 12 )
+song_name = "exploring"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0, 0, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 56, 104 )
+
+[node name="Camera" parent="." instance=ExtResource( 4 )]
+process_mode = 0
 
 [node name="Terrain" type="StaticBody2D" parent="."]
 collision_mask = 0
-script = ExtResource( 3 )
+script = ExtResource( 11 )
 
 [node name="ColorRect" type="ColorRect" parent="Terrain"]
 margin_left = 992.0
@@ -57,14 +66,7 @@ margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect6" type="ColorRect" parent="Terrain"]
-margin_left = 1344.0
-margin_top = 80.0
-margin_right = 1464.0
-margin_bottom = 120.0
-color = Color( 0.737255, 0.486275, 0.0901961, 1 )
-
-[node name="ColorRect10" type="ColorRect" parent="Terrain"]
-margin_left = 1344.0
+margin_left = 1368.0
 margin_top = 80.0
 margin_right = 1464.0
 margin_bottom = 120.0
@@ -90,7 +92,7 @@ color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect8" type="ColorRect" parent="Terrain"]
 margin_left = 32.0
-margin_top = 136.0
+margin_top = 112.0
 margin_right = 192.0
 margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
@@ -109,166 +111,162 @@ margin_right = 768.0
 margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 56, 120 )
-
-[node name="Camera" parent="." instance=ExtResource( 1 )]
-process_mode = 0
-
 [node name="CameraAreas" type="Node" parent="."]
 
-[node name="CameraArea" parent="CameraAreas" instance=ExtResource( 4 )]
+[node name="CameraArea" parent="CameraAreas" instance=ExtResource( 2 )]
 visible = false
 modulate = Color( 1, 1, 1, 0.631373 )
-margin_right = 2480.0
+margin_right = 1704.0
 margin_bottom = 180.0
 border_width = 2.0
 
 [node name="Platforms" type="Node" parent="."]
 
-[node name="PlatformGroup" parent="Platforms" instance=ExtResource( 5 )]
+[node name="PlatformGroup" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 816, 96 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup" instance=ExtResource( 6 )]
+[node name="ghostly_platform" parent="Platforms/PlatformGroup" instance=ExtResource( 3 )]
 
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup" instance=ExtResource( 6 )]
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="PlatformGroup2" parent="Platforms" instance=ExtResource( 5 )]
+[node name="PlatformGroup2" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 880, 104 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup2" instance=ExtResource( 6 )]
+[node name="ghostly_platform" parent="Platforms/PlatformGroup2" instance=ExtResource( 3 )]
 
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup2" instance=ExtResource( 6 )]
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup2" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="PlatformGroup3" parent="Platforms" instance=ExtResource( 5 )]
+[node name="PlatformGroup3" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 944, 112 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup3" instance=ExtResource( 6 )]
+[node name="ghostly_platform" parent="Platforms/PlatformGroup3" instance=ExtResource( 3 )]
 
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup3" instance=ExtResource( 6 )]
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup3" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="PlatformGroup4" parent="Platforms" instance=ExtResource( 5 )]
+[node name="PlatformGroup4" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 576, 104 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup4" instance=ExtResource( 6 )]
+[node name="ghostly_platform" parent="Platforms/PlatformGroup4" instance=ExtResource( 3 )]
 
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup4" instance=ExtResource( 6 )]
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup4" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="PlatformGroup6" parent="Platforms" instance=ExtResource( 5 )]
+[node name="PlatformGroup6" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 1256, 104 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup6" instance=ExtResource( 6 )]
+[node name="ghostly_platform" parent="Platforms/PlatformGroup6" instance=ExtResource( 3 )]
 
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup6" instance=ExtResource( 6 )]
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup6" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="PlatformGroup8" parent="Platforms" instance=ExtResource( 5 )]
+[node name="PlatformGroup8" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 1512, 136 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup8" instance=ExtResource( 6 )]
+[node name="ghostly_platform" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
 
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup8" instance=ExtResource( 6 )]
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="PlatformGroup9" parent="Platforms" instance=ExtResource( 5 )]
+[node name="PlatformGroup9" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 1480, 104 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup9" instance=ExtResource( 6 )]
+[node name="ghostly_platform" parent="Platforms/PlatformGroup9" instance=ExtResource( 3 )]
 
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup9" instance=ExtResource( 6 )]
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup9" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="PlatformGroup7" parent="Platforms" instance=ExtResource( 5 )]
+[node name="PlatformGroup7" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 1192, 112 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup7" instance=ExtResource( 6 )]
+[node name="ghostly_platform" parent="Platforms/PlatformGroup7" instance=ExtResource( 3 )]
 
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup7" instance=ExtResource( 6 )]
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup7" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
+
+[node name="Chandeliers" type="Node" parent="."]
 
 [node name="Lights" type="Node" parent="."]
 
-[node name="Sconce" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 784, 64 )
 
-[node name="Sconce2" parent="Lights" instance=ExtResource( 7 )]
-position = Vector2( 1144, 88 )
+[node name="Sconce2" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 1160, 88 )
 
-[node name="Sconce5" parent="Lights" instance=ExtResource( 7 )]
-position = Vector2( 1368, 56 )
+[node name="Sconce5" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 1384, 56 )
 
-[node name="Sconce9" parent="Lights" instance=ExtResource( 7 )]
-position = Vector2( 1448, 56 )
+[node name="Sconce9" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 1440, 56 )
 
-[node name="Sconce10" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce10" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 1448, 144 )
 
-[node name="Sconce11" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce11" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 1544, 56 )
 
-[node name="Sconce12" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce12" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 1624, 56 )
 
-[node name="Sconce6" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce6" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 1056, 88 )
 
-[node name="Sconce3" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce3" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 968, 88 )
 
-[node name="Sconce4" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce4" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 456, 112 )
 
-[node name="Sconce18" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce18" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 536, 112 )
 
-[node name="Sconce7" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce7" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 624, 64 )
 
-[node name="Sconce8" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce8" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 704, 64 )
 
-[node name="Sconce13" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce13" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 376, 88 )
 
-[node name="Sconce14" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce14" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 216, 88 )
 
-[node name="Sconce15" parent="Lights" instance=ExtResource( 7 )]
+[node name="Sconce15" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 296, 88 )
 
-[node name="Sconce16" parent="Lights" instance=ExtResource( 7 )]
-position = Vector2( 64, 112 )
+[node name="Sconce16" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 64, 88 )
 
-[node name="Sconce17" parent="Lights" instance=ExtResource( 7 )]
-position = Vector2( 144, 112 )
+[node name="Sconce17" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 144, 88 )
 
 [node name="Pits" type="Node" parent="."]
 
@@ -279,46 +277,49 @@ position = Vector2( 1144, 192 )
 position = Vector2( 120, 24 )
 shape = SubResource( 1 )
 
-[node name="DeathTrigger2" parent="Pits" instance=ExtResource( 8 )]
+[node name="Pit" parent="Pits" instance=ExtResource( 8 )]
 position = Vector2( 768, 192 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pits/DeathTrigger2"]
-position = Vector2( 112, 24 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pits/Pit"]
+position = Vector2( -344, 24 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pits/DeathTrigger2"]
+[node name="Pit2" parent="Pits" instance=ExtResource( 8 )]
+position = Vector2( 1224, 192 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pits/Pit2"]
 position = Vector2( -344, 24 )
 shape = SubResource( 2 )
 
 [node name="Checkpoints" type="Node" parent="."]
 
-[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 9 )]
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 5 )]
 position = Vector2( 392, 112 )
 
-[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 9 )]
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 5 )]
 position = Vector2( 1112, 112 )
 
-[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 9 )]
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 5 )]
 position = Vector2( 752, 88 )
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Spirit_Basic2" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Spirit_Basic2" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 688, 72 )
 
-[node name="Spirit_Basic4" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Spirit_Basic4" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 728, 72 )
 
-[node name="Spirit_Basic5" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Spirit_Basic5" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 1304, 80 )
 
-[node name="Spirit_Basic6" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Spirit_Basic6" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 1584, 40 )
 
-[node name="Spirit_Basic7" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Spirit_Basic7" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 1504, 8 )
 
-[node name="Spirit_Basic3" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Spirit_Basic3" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 328, 96 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -380,5 +381,12 @@ initial_velocity = 4.0
 scale_amount = 1.5
 color_ramp = SubResource( 3 )
 
-[node name="Barricade" parent="." instance=ExtResource( 12 )]
+[node name="Barricade" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1688, 80 )
+
+[node name="Portal" parent="." instance=ExtResource( 13 )]
+margin_left = 1696.0
+margin_top = 40.0
+margin_right = 1704.0
+margin_bottom = 80.0
+to_level = "res://Levels/level_2.tscn"

@@ -47,7 +47,7 @@ func set_invincible(state):
 	else:
 		emit_signal("invincibility_ended")
 
-func start_invincibility(duration : float):
+func start_invincibility(duration : float = invincibilty_duration):
 	self.set_invincible(true)
 	# start invincibility timer
 	var t = get_tree().create_timer(duration)

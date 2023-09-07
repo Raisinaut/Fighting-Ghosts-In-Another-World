@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Actors/Camera/CameraArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Camera/Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Actors/Objects/Sconce.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/TempTerrain.gd" type="Script" id=11]
+[ext_resource path="res://Levels/level.gd" type="Script" id=12]
+
+[node name="level_2" type="Node2D"]
+script = ExtResource( 12 )
+song_name = "battle_2"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0, 0, 0, 0 )
+
+[node name="Terrain" type="StaticBody2D" parent="."]
+collision_mask = 0
+script = ExtResource( 11 )
+
+[node name="ColorRect7" type="ColorRect" parent="Terrain"]
+margin_right = 32.0
+margin_bottom = 200.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect9" type="ColorRect" parent="Terrain"]
+margin_left = 192.0
+margin_right = 224.0
+margin_bottom = 200.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect8" type="ColorRect" parent="Terrain"]
+margin_left = 32.0
+margin_top = 136.0
+margin_right = 192.0
+margin_bottom = 200.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 48, 88 )
+
+[node name="Camera" parent="." instance=ExtResource( 4 )]
+process_mode = 0
+
+[node name="CameraAreas" type="Node" parent="."]
+
+[node name="CameraArea" parent="CameraAreas" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 1, 1, 1, 0.631373 )
+margin_right = 1704.0
+margin_bottom = 180.0
+border_width = 2.0
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="Sconce16" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 64, 112 )
+
+[node name="Sconce17" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 144, 112 )
+
+[node name="Pits" type="Node" parent="."]
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="back" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.235294 )
+z_index = -100
+motion_scale = Vector2( 1.1, 1.1 )
+motion_mirroring = Vector2( 1000, 1000 )
+
+[node name="mid" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.133333 )
+motion_scale = Vector2( 1.2, 1.2 )
+motion_mirroring = Vector2( 1000, 1000 )
+
+[node name="font" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.0392157 )
+motion_scale = Vector2( 1.4, 1.4 )
+motion_mirroring = Vector2( 1000, 1000 )

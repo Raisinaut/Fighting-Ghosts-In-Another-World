@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Managers/Scene Changer/LoadingScreen.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=6]
+resource_name = "FADE_IN_SCREEN"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Background:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "FADE_LOAD"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Background/MarginContainer:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "FADE_OUT_SCREEN"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Background:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Background/MarginContainer:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Background:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.560784, 0.560784, 0.560784, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="LoadingScreen" type="CanvasLayer"]
+pause_mode = 2
+layer = 128
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE_IN_SCREEN = SubResource( 6 )
+anims/FADE_LOAD = SubResource( 4 )
+anims/FADE_OUT_SCREEN = SubResource( 7 )
+anims/RESET = SubResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0705882, 0.0392157, 0.101961, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Background/MarginContainer"]
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/CenterContainer"]
+margin_left = 80.0
+margin_top = 79.0
+margin_right = 240.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Background/MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 160.0
+custom_colors/font_color = Color( 0.368627, 0.368627, 0.368627, 1 )
+text = "Loading"
+align = 1
+uppercase = true
+
+[node name="LoadingBar" type="ProgressBar" parent="Background/MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 4.0
+margin_right = 160.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 160, 4 )
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
