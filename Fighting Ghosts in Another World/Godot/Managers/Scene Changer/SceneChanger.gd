@@ -21,15 +21,11 @@ func goto_scene(path, show_loading_progress = false):
 		return
 	
 	var loading_screen = LoadingScreen.instance()
-	
 	get_tree().get_root().call_deferred("add_child", loading_screen)
 	yield(loading_screen, "faded_in")
-	
 	current_scene.queue_free()
-	MusicPlayer.end_song()
 	
 	var t = OS.get_ticks_msec()
-	
 	while OS.get_ticks_msec() - t < max_load_time:
 		var err = loader.poll()
 		if err == ERR_FILE_EOF:
@@ -58,5 +54,4 @@ func get_current_scene():
 	var root_children = get_tree().get_root().get_children()
 	var number_of_singletons = 5
 	var current_scene = root_children[number_of_singletons]
-	print(current_scene)
 	return current_scene

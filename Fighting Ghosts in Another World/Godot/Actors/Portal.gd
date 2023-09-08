@@ -5,11 +5,10 @@ onready var collision = $Area2D/CollisionShape2D
 export var to_level : String = ""
 
 func _ready():
-	print(get_tree().get_root())
-	match_reference_collision()
+	match_collision_to_reference()
 
 
-func match_reference_collision():
+func match_collision_to_reference():
 	var center = rect_position + (rect_size / 2)
 	collision.shape = RectangleShape2D.new()
 	collision.shape.extents = rect_size / 2

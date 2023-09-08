@@ -20,15 +20,15 @@ var target : Node2D = null
 var revealed := false setget set_revealed
 var aggressive := false
 # Movement Parameters
-var max_speed := 50
+var max_speed := 35
 var max_chase_distance := 300
 var max_target_distance := 200
 
-var acceleration := 25
+var acceleration := 45
 var friction := 15
 var stun_duration := 0.5
 var time_since_spawn := 0.0
-var oscillation_rate = 3
+var oscillation_rate = 4
 
 var state = STATES.WAIT setget set_state
 enum STATES {
@@ -82,7 +82,8 @@ func _physics_process(delta):
 	var oscillator = sin(time_since_spawn * oscillation_rate)
 	
 	# Bobbing
-	var bob_velocity = Vector2(0, oscillator * 8)
+	var velocity_percentage = range_lerp(velocity.length(), 0, max_speed, 0, 1)
+	var bob_velocity = Vector2(0, oscillator * 16) * velocity_percentage
 	bob_velocity = move_and_slide(bob_velocity)
 	
 	# Knockback
@@ -98,7 +99,7 @@ func _physics_process(delta):
 	if target and stunTimer.is_stopped():
 		var chase_height_offset := Vector2(0, -8)
 		var direction_to_target = global_position.direction_to(target.global_position + chase_height_offset)
-		velocity = velocity.move_toward(direction_to_target * max_speed * max(oscillator, 0.5), acceleration * delta)
+		velocity = velocity.move_toward(direction_to_target * max_speed, acceleration * delta)
 		# Flip sprites
 		if global_position.direction_to(target.global_position).x < 0:
 			for s in sprites.get_children():
@@ -131,6 +132,9 @@ func set_state(new_state):
 			if not revealed:
 				set_revealed(true)
 		STATES.RETURN:
+			if aggressive:
+				set_state(STATES.CHASE)
+				return
 			# reset aggro timer
 			aggroTimer.stop()
 			# reset target

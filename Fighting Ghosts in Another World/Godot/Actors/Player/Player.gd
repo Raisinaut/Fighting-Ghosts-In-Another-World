@@ -246,14 +246,13 @@ func take_damage(amount):
 	# only flash if not dead
 	if $Stats.hp - amount > 0:
 		sprite.flash(hurtbox.invincibilty_duration)
-	emit_signal("damaged")
 	$Stats.set_hp($Stats.hp - amount)
+	emit_signal("damaged")
 	sfx2d.play_at_random_pitch(sfx2d.damaged)
 	set_bullet_time(false)
 	set_frame_freeze(true)
 	just_damaged = true
-	
-	print("HP remaining: ", $Stats.hp)
+
 
 
 # sets knockback dependent on current velocity direction
@@ -272,7 +271,7 @@ func take_knockback(_amount : float, knockback_vec : Vector2):
 
 func set_frame_freeze(new_state, duration : float = 0.4):
 	frame_freeze = new_state
-	print("frame freeze")
+#	print("frame freeze")
 	Engine.time_scale = FRAME_FREEZE_SCALE
 	frame_freeze_timer = get_tree().create_timer(duration * Engine.time_scale)
 	yield(frame_freeze_timer, "timeout")
