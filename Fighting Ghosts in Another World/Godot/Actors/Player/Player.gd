@@ -56,7 +56,7 @@ func _ready():
 	$HUD.hp.set_max($Stats.max_hp)
 
 
-func _process(delta):
+func _process(_delta):
 	charge_logic()
 	set_input_direction()
 

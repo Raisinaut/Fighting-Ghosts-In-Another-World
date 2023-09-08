@@ -7,10 +7,12 @@ onready var hp = get_node("%HP")
 var bump_tween : SceneTreeTween = null
 var fade_tween : SceneTreeTween = null
 
+var _discard = null
+
 
 
 func _ready():
-	GlobalEnemyLogic.connect("enemy_list_modified", self, "set_spirit_count")
+	_discard = GlobalEnemyLogic.connect("enemy_list_modified", self, "set_spirit_count")
 
 func set_spirit_count(value : int):
 	# make opaque
@@ -41,16 +43,16 @@ func bump(node : Control, pixel_amount : Vector2, duration : float = 0.3, bounce
 		
 	bump_tween = create_tween()
 	var start_pos = node.rect_position
-	bump_tween.set_trans(Tween.TRANS_QUAD)
-	bump_tween.set_ease(Tween.EASE_OUT)
-	bump_tween.tween_property(node, "rect_position", node.rect_position - pixel_amount, duration * 0.35)
+	_discard = bump_tween.set_trans(Tween.TRANS_QUAD)
+	_discard = bump_tween.set_ease(Tween.EASE_OUT)
+	_discard = bump_tween.tween_property(node, "rect_position", node.rect_position - pixel_amount, duration * 0.35)
 	if bounce:
-		bump_tween.set_ease(Tween.EASE_IN)
-		bump_tween.tween_property(node, "rect_position", node.rect_position + pixel_amount + (pixel_amount * 0.5), duration * 0.35)
-	bump_tween.set_ease(Tween.EASE_OUT)
-	bump_tween.tween_property(node, "rect_position", start_pos, duration * 0.3)
+		_discard = bump_tween.set_ease(Tween.EASE_IN)
+		_discard = bump_tween.tween_property(node, "rect_position", node.rect_position + pixel_amount + (pixel_amount * 0.5), duration * 0.35)
+	_discard = bump_tween.set_ease(Tween.EASE_OUT)
+	_discard = bump_tween.tween_property(node, "rect_position", start_pos, duration * 0.3)
 
 
 func fade_out(node : Control, duration : float):
 	fade_tween = create_tween()
-	fade_tween.tween_property(node, "modulate:a", 0.4, duration)
+	_discard = fade_tween.tween_property(node, "modulate:a", 0.4, duration)

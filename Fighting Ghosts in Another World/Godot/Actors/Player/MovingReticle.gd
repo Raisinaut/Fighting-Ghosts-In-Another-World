@@ -25,7 +25,9 @@ var up_tilt = PI/6
 var time_enabled: float = 0.0
 var _discard = null
 
+
 func _ready():
+	reticle_sprite.playing = true
 	hide()
 
 

@@ -32,6 +32,8 @@ var stun_duration := 0.5
 var time_since_spawn := 0.0
 var oscillation_rate = 4
 
+var _discard = null
+
 var state = STATES.WAIT setget set_state
 enum STATES {
 	WAIT,
@@ -61,9 +63,9 @@ func fade_in(duration) -> SceneTreeTween:
 	hurtbox.set_invincible(false)
 	# animate fade
 	fade_in_tween = create_tween()
-	fade_in_tween.set_ease(Tween.EASE_IN)
+	_discard = fade_in_tween.set_ease(Tween.EASE_IN)
 	modulate = Color.transparent
-	fade_in_tween.tween_property(self, "modulate", Color.white, duration)
+	_discard = fade_in_tween.tween_property(self, "modulate", Color.white, duration)
 	return fade_in_tween
 
 # returns tween to allow yielding
@@ -72,7 +74,7 @@ func fade_out(duration) -> SceneTreeTween:
 	hitbox.set_disabled(true)
 	# animate fade
 	var t = create_tween()
-	t.tween_property(self, "modulate", Color.transparent, duration)
+	_discard = t.tween_property(self, "modulate", Color.transparent, duration)
 	return t
 
 

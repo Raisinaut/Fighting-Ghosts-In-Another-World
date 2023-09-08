@@ -325,8 +325,6 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="ReticleLayer/MovingReticle/Pivot/Reticle"]
 frames = SubResource( 29 )
-frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReticleLayer/MovingReticle/Pivot/Reticle"]
 shape = SubResource( 30 )
