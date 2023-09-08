@@ -25,7 +25,7 @@ func set_enemy_list(arr):
 	emit_signal("enemy_list_modified", enemy_list.size())
 	if enemy_list.size() == 0:
 		emit_signal("enemy_list_cleared")
-	print("Remaining enemies: ", enemy_list.size())
+#	print("Remaining enemies: ", enemy_list.size())
 
 func erase_enemy(e):
 	if enemy_list.has(e):

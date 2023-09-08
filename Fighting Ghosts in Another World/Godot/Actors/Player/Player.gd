@@ -11,7 +11,7 @@ onready var sprite := $AnimatedSprite
 onready var coyoteTimer = $CoyoteTimer
 onready var jumpBuffer = $JumpBuffer
 onready var dustParticles = $DustParticles
-onready var movingReticle = $CanvasLayer/MovingReticle
+onready var movingReticle = get_node("%MovingReticle")
 onready var collisionShape = $CollisionShape2D
 onready var sfx2d = $SFX2D
 onready var hurtbox = $HurtBox
@@ -53,6 +53,13 @@ var state = STATES.MOVE setget set_state
 func _ready():
 	CheckpointManager.spawn_location = global_position
 	GlobalEnemyLogic.player_node = self
+	$HUD.hp.set_max($Stats.max_hp)
+
+
+func _process(delta):
+	charge_logic()
+	set_input_direction()
+
 
 func _physics_process(delta):
 	match(state):
@@ -81,7 +88,6 @@ func _physics_process(delta):
 #				# prevent movement while being knocked back
 				if is_zero_approx(knockback.length()):
 					velocity.x = move_speed * input_direction
-#				velocity.x = move_toward(velocity.x, input_direction * move_speed, move_accel * delta)
 			velocity.y += gravity * delta
 			velocity.y = min(velocity.y, max_fall_speed) # limit fall speed
 			
@@ -213,6 +219,9 @@ func _unhandled_input(event):
 	if state != STATES.MOVE:
 		return
 	
+	if not $ChargeTimer.is_stopped():
+		return
+	
 	# Throw
 	if event.is_action("throw") and Input.is_action_just_pressed("throw"):
 		if not movingReticle.enabled:
@@ -231,12 +240,33 @@ func _unhandled_input(event):
 		movingReticle.set_enabled(false)
 		set_bullet_time(false)
 	
-	# Movement
+	# Jump
+	if not bullet_time:
+		if Input.is_action_just_pressed("jump"):
+			jumpBuffer.start()
+
+func set_input_direction():
+	if not $ChargeTimer.is_stopped():
+		return
 	if not bullet_time:
 		input_direction = Input.get_axis("move_left", "move_right")
 		# Input buffer
 		if Input.is_action_just_pressed("jump"):
 			jumpBuffer.start()
+
+func charge_logic():
+	# Charge
+	if Input.is_action_pressed("charge"):
+		if is_on_floor():
+			print("Charging: ", $ChargeTimer.time_left)
+			if $ChargeTimer.is_stopped():
+				$ChargeTimer.start()
+				movingReticle.set_enabled(false)
+			input_direction = 0
+			return
+	elif Input.is_action_just_released("charge"):
+		if not $ChargeTimer.is_stopped():
+			$ChargeTimer.stop()
 
 
 func take_damage(amount):
@@ -247,6 +277,7 @@ func take_damage(amount):
 	if $Stats.hp - amount > 0:
 		sprite.flash(hurtbox.invincibilty_duration)
 	$Stats.set_hp($Stats.hp - amount)
+	$HUD.hp.set_current($Stats.hp)
 	emit_signal("damaged")
 	sfx2d.play_at_random_pitch(sfx2d.damaged)
 	set_bullet_time(false)
@@ -320,3 +351,7 @@ func _on_AnimatedSprite_frame_changed():
 
 func _on_Stats_hp_depleted():
 	set_state(STATES.DEAD)
+
+
+func _on_ChargeTimer_timeout():
+	$Stats.mp += 1

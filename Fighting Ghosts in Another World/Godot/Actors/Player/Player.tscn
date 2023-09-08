@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Assets/Textures/Characters/marta.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=2]
@@ -28,7 +28,8 @@
 [ext_resource path="res://Assets/Audio/Orb/launch.wav" type="AudioStream" id=26]
 [ext_resource path="res://Assets/Audio/VariableStreamPlayer.gd" type="Script" id=27]
 [ext_resource path="res://Assets/Audio/Player Movement/Damaged.wav" type="AudioStream" id=28]
-[ext_resource path="res://Combat/Stats.gd" type="Script" id=29]
+[ext_resource path="res://Combat/PlayerStats.gd" type="Script" id=29]
+[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=30]
 
 [sub_resource type="CapsuleShape2D" id=35]
 radius = 5.0
@@ -199,8 +200,21 @@ collision_mask = 3
 script = ExtResource( 2 )
 projectile = ExtResource( 9 )
 
+[node name="HUD" parent="." instance=ExtResource( 30 )]
+
 [node name="Stats" type="Node" parent="."]
 script = ExtResource( 29 )
+
+[node name="ChargeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 1, 1, 0.623529 )
@@ -246,14 +260,6 @@ texture = ExtResource( 11 )
 texture_scale = 0.2
 mode = 2
 
-[node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
-[node name="JumpBuffer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 36 )
 position = Vector2( 0, -8 )
@@ -284,31 +290,32 @@ automatic_invincibility = true
 position = Vector2( 0, -7 )
 shape = SubResource( 26 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ReticleLayer" type="CanvasLayer" parent="."]
 
-[node name="MovingReticle" type="Node2D" parent="CanvasLayer"]
+[node name="MovingReticle" type="Node2D" parent="ReticleLayer"]
+unique_name_in_owner = true
 show_behind_parent = true
 position = Vector2( 0, -6 )
 script = ExtResource( 8 )
 
-[node name="activate" type="AudioStreamPlayer" parent="CanvasLayer/MovingReticle"]
+[node name="activate" type="AudioStreamPlayer" parent="ReticleLayer/MovingReticle"]
 stream = ExtResource( 25 )
 volume_db = -18.0
 bus = "Without Reverb"
 script = ExtResource( 27 )
 
-[node name="sweep" type="AudioStreamPlayer" parent="CanvasLayer/MovingReticle"]
+[node name="sweep" type="AudioStreamPlayer" parent="ReticleLayer/MovingReticle"]
 stream = ExtResource( 24 )
 volume_db = -26.0
 bus = "Without Reverb"
 
-[node name="DashedLine" type="Node2D" parent="CanvasLayer/MovingReticle"]
+[node name="DashedLine" type="Node2D" parent="ReticleLayer/MovingReticle"]
 
-[node name="Pivot" type="Position2D" parent="CanvasLayer/MovingReticle"]
+[node name="Pivot" type="Position2D" parent="ReticleLayer/MovingReticle"]
 
-[node name="AttackOrigin" type="Position2D" parent="CanvasLayer/MovingReticle/Pivot"]
+[node name="AttackOrigin" type="Position2D" parent="ReticleLayer/MovingReticle/Pivot"]
 
-[node name="Reticle" type="Area2D" parent="CanvasLayer/MovingReticle/Pivot"]
+[node name="Reticle" type="Area2D" parent="ReticleLayer/MovingReticle/Pivot"]
 position = Vector2( 48, 0 )
 collision_layer = 0
 collision_mask = 8
@@ -316,14 +323,15 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="AnimatedSprite" parent="CanvasLayer/MovingReticle/Pivot/Reticle"]
+[node name="Sprite" type="AnimatedSprite" parent="ReticleLayer/MovingReticle/Pivot/Reticle"]
 frames = SubResource( 29 )
 frame = 1
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/MovingReticle/Pivot/Reticle"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReticleLayer/MovingReticle/Pivot/Reticle"]
 shape = SubResource( 30 )
 
 [connection signal="hp_depleted" from="Stats" to="." method="_on_Stats_hp_depleted"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_ChargeTimer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite" to="AnimatedSprite" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
