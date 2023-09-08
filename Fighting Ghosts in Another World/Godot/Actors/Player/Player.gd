@@ -223,22 +223,25 @@ func _unhandled_input(event):
 		return
 	
 	# Throw
-	if event.is_action("throw") and Input.is_action_just_pressed("throw"):
-		if not movingReticle.enabled:
-			if not is_on_floor():
-				set_bullet_time(true)
-			movingReticle.set_enabled(true)
-		else:
-			var m = instance_scene(projectile)
-			m.global_position = self.global_position + movingReticle.reticle_offset
-			m.direction = movingReticle.get_direction()
+	if $Stats.mp > 0:
+		if event.is_action("throw") and Input.is_action_just_pressed("throw"):
+			if not movingReticle.enabled:
+				if not is_on_floor():
+					set_bullet_time(true)
+				movingReticle.set_enabled(true)
+			else:
+				$Stats.mp -= 1
+				var m = instance_scene(projectile)
+				m.global_position = self.global_position + movingReticle.reticle_offset
+				m.direction = movingReticle.get_direction()
+				m.connect("impacted_target", $Stats, "restore_mp", [1])
+				movingReticle.set_enabled(false)
+				set_bullet_time(false)
+				sfx2d.play_at_random_pitch(sfx2d.launch)
+			
+		elif Input.is_action_pressed("cancel_throw"):
 			movingReticle.set_enabled(false)
 			set_bullet_time(false)
-			sfx2d.play_at_random_pitch(sfx2d.launch)
-		
-	elif Input.is_action_pressed("cancel_throw"):
-		movingReticle.set_enabled(false)
-		set_bullet_time(false)
 	
 	# Jump
 	if not bullet_time:
@@ -258,7 +261,7 @@ func charge_logic():
 	# Charge
 	if Input.is_action_pressed("charge"):
 		if is_on_floor():
-			print("Charging: ", $ChargeTimer.time_left)
+#			print("Charging: ", $ChargeTimer.time_left)
 			if $ChargeTimer.is_stopped():
 				$ChargeTimer.start()
 				movingReticle.set_enabled(false)

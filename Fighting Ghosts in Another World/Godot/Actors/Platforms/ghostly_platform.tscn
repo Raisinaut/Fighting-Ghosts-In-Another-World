@@ -61,7 +61,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.81364 ), 1.10182, 0.0, 
 offsets = PoolRealArray( 0, 0.513967, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.122905, 1, 1, 1, 0 )
 
-[node name="ghostly_platform" type="StaticBody2D"]
+[node name="ghostly_platform" type="StaticBody2D" groups=["absorbent"]]
 z_index = -10
 collision_layer = 2
 collision_mask = 0
@@ -73,11 +73,11 @@ shape = SubResource( 5 )
 disabled = true
 one_way_collision = true
 
-[node name="ProjectileDetection" type="Area2D" parent="."]
+[node name="HitBoxDetection" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 32
+collision_mask = 64
 
-[node name="DetectionCollision" type="CollisionShape2D" parent="ProjectileDetection"]
+[node name="DetectionCollision" type="CollisionShape2D" parent="HitBoxDetection"]
 position = Vector2( 8, 8 )
 shape = SubResource( 6 )
 
@@ -176,4 +176,4 @@ bus = "With Reverb"
 script = ExtResource( 8 )
 pitch_variance = 0.1
 
-[connection signal="body_entered" from="ProjectileDetection" to="." method="_on_ProjectileDetection_body_entered"]
+[connection signal="area_entered" from="HitBoxDetection" to="." method="_on_ProjectileDetection_area_entered"]

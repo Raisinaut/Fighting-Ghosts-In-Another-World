@@ -35,7 +35,7 @@ visible = false
 color = Color( 0, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 56, 104 )
+position = Vector2( 520, 120 )
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 process_mode = 0

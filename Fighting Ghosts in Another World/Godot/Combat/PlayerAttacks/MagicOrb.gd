@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
+signal impacted_target
+
 export var afterimage_scene : PackedScene = null
 export var impact_scene : PackedScene = null
 
-onready var hitbox = $Sprite/HitBox
+onready var hitbox = $HitBox
 onready var afterimageTimer = $AfterimageTimer
 
 var direction := Vector2.ZERO
@@ -22,7 +24,8 @@ func _ready():
 
 
 func _on_hitbox_detected(detecting_node):
-	if detecting_node.get_parent().is_in_group("enemy"):
+	if detecting_node.is_in_group("absorbent") or detecting_node.get_parent().is_in_group("absorbent"):
+		emit_signal("impacted_target")
 		end(detecting_node)
 
 

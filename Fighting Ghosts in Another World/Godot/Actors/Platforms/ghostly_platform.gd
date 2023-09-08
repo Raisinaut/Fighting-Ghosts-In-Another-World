@@ -6,8 +6,8 @@ onready var revertedSprite = $Reverted
 onready var wispSprite = $Wisp
 onready var mainSprite = $Main
 onready var physicsCollision = $PhysicsCollision
-onready var detection = $ProjectileDetection
-onready var detectionCollision = $ProjectileDetection/DetectionCollision
+onready var detection = $HitBoxDetection
+onready var detectionCollision = $HitBoxDetection/DetectionCollision
 onready var revertParticles = $RevertParticles
 onready var light = $Wisp/Sparkles/Light2D
 
@@ -85,16 +85,16 @@ func reset_values(height):
 	light.energy = light_energy_initial
 
 
-func _on_ProjectileDetection_body_entered(body):
-	if not active:
-		set_active(true)
-		if body.has_method("end"):
-			body.end(self) # pass self as reference for body's function
-
-
 func flash():
 	var t = create_tween()
 	light.scale = Vector2.ONE * 1.5
 	t.set_ease(Tween.EASE_OUT)
 	t.set_trans(Tween.TRANS_EXPO)
 	t.tween_property(light, "scale", Vector2.ONE, 0.25)
+
+
+func _on_ProjectileDetection_area_entered(area):
+	if area.has_signal("detected"):
+		if not active:
+			set_active(true)
+			area.emit_signal("detected", self)
