@@ -14,6 +14,8 @@ onready var hitbox = $HitBox
 onready var hurtbox = $HurtBox
 
 var rng = RandomNumberGenerator.new()
+var fade_in_tween : SceneTreeTween = null
+
 var velocity := Vector2.ZERO
 var knockback := Vector2.ZERO
 var target : Node2D = null
@@ -24,7 +26,7 @@ var max_speed := 35
 var max_chase_distance := 300
 var max_target_distance := 200
 
-var acceleration := 45
+var acceleration := 40
 var friction := 15
 var stun_duration := 0.5
 var time_since_spawn := 0.0
@@ -58,14 +60,11 @@ func fade_in(duration) -> SceneTreeTween:
 	hitbox.set_disabled(true)
 	hurtbox.set_invincible(false)
 	# animate fade
-	var t = create_tween()
-	t.set_ease(Tween.EASE_IN)
+	fade_in_tween = create_tween()
+	fade_in_tween.set_ease(Tween.EASE_IN)
 	modulate = Color.transparent
-	t.tween_property(self, "modulate", Color.white, duration)
-	if is_defeated():
-		# return if defeated before finished fading in
-		return null
-	return t
+	fade_in_tween.tween_property(self, "modulate", Color.white, duration)
+	return fade_in_tween
 
 # returns tween to allow yielding
 func fade_out(duration) -> SceneTreeTween:
@@ -82,7 +81,7 @@ func _physics_process(delta):
 	var oscillator = sin(time_since_spawn * oscillation_rate)
 	
 	# Bobbing
-	var velocity_percentage = range_lerp(velocity.length(), 0, max_speed, 0, 1)
+	var velocity_percentage = range_lerp(abs(velocity.x), 0, max_speed, 0, 1)
 	var bob_velocity = Vector2(0, oscillator * 16) * velocity_percentage
 	bob_velocity = move_and_slide(bob_velocity)
 	
@@ -197,12 +196,13 @@ func _on_AggroTimer_timeout():
 
 # what happens when we die? This, I guess.
 func defeated():
+	fade_in_tween.kill()
 	# prevent collisions with projectiles
 	hurtbox.set_invincible(true)
+	hitbox.set_disabled(true)
 	# play sfx
 	$DeafeatedSFX.play_at_random_pitch()
-	var fade_tween = fade_out(stun_duration)
-	yield(fade_tween, "finished")
+	yield(fade_out(stun_duration), "finished")
 	if $DeafeatedSFX.playing:
 		yield($DeafeatedSFX, "finished")
 	emit_signal("defeated")
