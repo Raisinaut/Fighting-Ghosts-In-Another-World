@@ -74,22 +74,22 @@ connecting_node = NodePath("../CandleHolder")
 position = Vector2( 0, 66 )
 
 [node name="Candle" parent="Terrain/Chandelier/CandleHolder/Candles" index="0"]
-frame = 3
+frame = 2
 
 [node name="Candle2" parent="Terrain/Chandelier/CandleHolder/Candles" index="1"]
-frame = 3
+frame = 2
 
 [node name="Candle3" parent="Terrain/Chandelier/CandleHolder/Candles" index="2"]
-frame = 3
+frame = 2
 
 [node name="Candle4" parent="Terrain/Chandelier/CandleHolder/Candles" index="3"]
-frame = 3
+frame = 2
 
 [node name="Candle5" parent="Terrain/Chandelier/CandleHolder/Candles" index="4"]
-frame = 0
+frame = 3
 
 [node name="Candle6" parent="Terrain/Chandelier/CandleHolder/Candles" index="5"]
-frame = 0
+frame = 3
 
 [node name="Chandelier2" parent="Terrain" instance=ExtResource( 6 )]
 position = Vector2( 56, 48 )
@@ -101,22 +101,22 @@ connecting_node = NodePath("../CandleHolder")
 position = Vector2( 0, 38 )
 
 [node name="Candle" parent="Terrain/Chandelier2/CandleHolder/Candles" index="0"]
-frame = 3
+frame = 2
 
 [node name="Candle2" parent="Terrain/Chandelier2/CandleHolder/Candles" index="1"]
-frame = 3
+frame = 2
 
 [node name="Candle3" parent="Terrain/Chandelier2/CandleHolder/Candles" index="2"]
-frame = 3
+frame = 2
 
 [node name="Candle4" parent="Terrain/Chandelier2/CandleHolder/Candles" index="3"]
-frame = 3
+frame = 2
 
 [node name="Candle5" parent="Terrain/Chandelier2/CandleHolder/Candles" index="4"]
-frame = 3
+frame = 2
 
 [node name="Candle6" parent="Terrain/Chandelier2/CandleHolder/Candles" index="5"]
-frame = 3
+frame = 2
 
 [node name="Chandelier3" parent="Terrain" instance=ExtResource( 6 )]
 position = Vector2( 216, 48 )
@@ -128,29 +128,29 @@ connecting_node = NodePath("../CandleHolder")
 position = Vector2( 0, 48 )
 
 [node name="Candle" parent="Terrain/Chandelier3/CandleHolder/Candles" index="0"]
-frame = 3
+frame = 2
 
 [node name="Candle2" parent="Terrain/Chandelier3/CandleHolder/Candles" index="1"]
-frame = 3
+frame = 2
 
 [node name="Candle3" parent="Terrain/Chandelier3/CandleHolder/Candles" index="2"]
-frame = 3
+frame = 2
 
 [node name="Candle4" parent="Terrain/Chandelier3/CandleHolder/Candles" index="3"]
-frame = 3
+frame = 2
 
 [node name="Candle5" parent="Terrain/Chandelier3/CandleHolder/Candles" index="4"]
-frame = 3
+frame = 2
 
 [node name="Candle6" parent="Terrain/Chandelier3/CandleHolder/Candles" index="5"]
-frame = 3
+frame = 2
 
 [node name="SpawnArea" parent="." instance=ExtResource( 4 )]
-margin_left = 128.0
+margin_left = 30.0
 margin_top = 48.0
-margin_right = 192.0
-margin_bottom = 96.0
-MAX_ENEMIES = 2
+margin_right = 288.0
+margin_bottom = 134.0
+spawn_limit = 5
 
 [node name="Camera" parent="." instance=ExtResource( 8 )]
 position = Vector2( 160, 88 )

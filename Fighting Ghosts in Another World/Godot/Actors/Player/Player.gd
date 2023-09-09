@@ -274,6 +274,8 @@ func charge_logic():
 			sfx.charge.pitch_scale = range_lerp($ChargeTimer.time_left, $ChargeTimer.wait_time, 0, 1 + $Stats.mp, 2 + $Stats.mp)
 			input_direction = 0
 			return
+		else:
+			fake_input("charge", false)
 	elif Input.is_action_just_released("charge"):
 		if not $ChargeTimer.is_stopped():
 			$ChargeTimer.stop()

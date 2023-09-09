@@ -198,6 +198,7 @@ func _on_AggroTimer_timeout():
 
 # what happens when we die? This, I guess.
 func defeated():
+	emit_signal("defeated")
 	fade_in_tween.kill()
 	# prevent collisions with projectiles
 	hurtbox.set_invincible(true)
@@ -207,7 +208,7 @@ func defeated():
 	yield(fade_out(stun_duration), "finished")
 	if $DeafeatedSFX.playing:
 		yield($DeafeatedSFX, "finished")
-	emit_signal("defeated")
+#	emit_signal("defeated")
 	queue_free()
 
 

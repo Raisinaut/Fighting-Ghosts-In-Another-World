@@ -3,7 +3,10 @@
 [ext_resource path="res://Actors/SpawnArea.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Spirits/Spirit_Basic.tscn" type="PackedScene" id=2]
 
-[node name="SpawnArea" type="ReferenceRect"]
+[node name="SpawnArea" type="ReferenceRect" groups=["spawner"]]
+margin_right = 20.0
+margin_bottom = 20.0
+border_width = 2.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

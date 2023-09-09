@@ -28,7 +28,7 @@ func set_mp(value):
 		return
 	elif value > mp:
 		restoreMP.play()
-		restoreParticles.emitting = true
+		restoreParticles.emit()
 	mp = value
 	emit_signal("mp_changed", mp)
 	if mp == max_mp:

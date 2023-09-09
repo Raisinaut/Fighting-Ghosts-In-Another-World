@@ -24,4 +24,5 @@ shape = SubResource( 1 )
 [node name="DisableSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = -4.0
+attenuation = 1e-05
 bus = "With Reverb"

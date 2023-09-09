@@ -13,7 +13,7 @@ var _discard = null
 
 
 func _ready():
-	_discard = GlobalEnemyLogic.connect("enemy_list_modified", self, "set_spirit_count")
+	_discard = GlobalEnemyLogic.connect("total_enemy_count_changed", self, "set_spirit_count")
 
 func set_spirit_count(value : int):
 	# make opaque

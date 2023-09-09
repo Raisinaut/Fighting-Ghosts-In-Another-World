@@ -12,8 +12,8 @@ var _discard = null
 
 
 func _ready():
-	set_open(true)
-	_discard = GlobalEnemyLogic.connect("enemy_list_cleared", self, "set_open", [true])
+	set_open(false)
+	_discard = GlobalEnemyLogic.connect("all_enemies_defeated", self, "set_open", [true])
 
 
 func set_open(state):
@@ -35,7 +35,7 @@ func set_open(state):
 	var tween_rect = Rect2(0, end_height, 16, 48 - end_height)
 	_discard = position_tween.tween_method(self, "set_region_rect", sprite.region_rect,tween_rect, 0.4 )
 	
-	collision.disabled = open
+	collision.set_deferred("disabled", open)
 
 
 func set_region_rect(rect : Rect2):

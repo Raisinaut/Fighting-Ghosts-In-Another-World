@@ -35,7 +35,7 @@ visible = false
 color = Color( 0, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1640, 72 )
+position = Vector2( 48, 104 )
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 process_mode = 0
@@ -49,13 +49,13 @@ script = ExtResource( 11 )
 
 [node name="ColorRect" type="ColorRect" parent="Terrain"]
 margin_left = 992.0
-margin_top = 112.0
-margin_right = 1144.0
+margin_top = 120.0
+margin_right = 1136.0
 margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect4" type="ColorRect" parent="Terrain"]
-margin_left = 1264.0
+margin_left = 1208.0
 margin_top = 168.0
 margin_right = 1520.0
 margin_bottom = 200.0
@@ -69,7 +69,7 @@ margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect6" type="ColorRect" parent="Terrain"]
-margin_left = 1344.0
+margin_left = 1328.0
 margin_top = 80.0
 margin_right = 1464.0
 margin_bottom = 120.0
@@ -171,7 +171,7 @@ __meta__ = {
 position = Vector2( -16, 0 )
 
 [node name="PlatformGroup6" parent="Platforms" instance=ExtResource( 10 )]
-position = Vector2( 1256, 104 )
+position = Vector2( 1288, 64 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -179,6 +179,17 @@ __meta__ = {
 [node name="ghostly_platform" parent="Platforms/PlatformGroup6" instance=ExtResource( 3 )]
 
 [node name="ghostly_platform2" parent="Platforms/PlatformGroup6" instance=ExtResource( 3 )]
+position = Vector2( -16, 0 )
+
+[node name="PlatformGroup7" parent="Platforms" instance=ExtResource( 10 )]
+position = Vector2( 1232, 48 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup7" instance=ExtResource( 3 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup7" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
 [node name="PlatformGroup8" parent="Platforms" instance=ExtResource( 10 )]
@@ -198,17 +209,6 @@ position = Vector2( -24, -32 )
 [node name="ghostly_platform4" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
 position = Vector2( -40, -32 )
 
-[node name="PlatformGroup7" parent="Platforms" instance=ExtResource( 10 )]
-position = Vector2( 1192, 112 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ghostly_platform" parent="Platforms/PlatformGroup7" instance=ExtResource( 3 )]
-
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup7" instance=ExtResource( 3 )]
-position = Vector2( -16, 0 )
-
 [node name="Chandeliers" type="Node" parent="."]
 
 [node name="Lights" type="Node" parent="."]
@@ -217,13 +217,16 @@ position = Vector2( -16, 0 )
 position = Vector2( 784, 64 )
 
 [node name="Sconce2" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1160, 88 )
+position = Vector2( 1136, 96 )
 
 [node name="Sconce5" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1360, 56 )
+position = Vector2( 1392, 56 )
+
+[node name="Sconce21" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 1320, 56 )
 
 [node name="Sconce9" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1440, 56 )
+position = Vector2( 1464, 56 )
 
 [node name="Sconce10" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 1440, 144 )
@@ -232,7 +235,13 @@ position = Vector2( 1440, 144 )
 position = Vector2( 1440, 144 )
 
 [node name="Sconce20" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1320, 144 )
+position = Vector2( 1360, 144 )
+
+[node name="Sconce22" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 1280, 144 )
+
+[node name="Sconce23" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 1200, 144 )
 
 [node name="Sconce11" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 1536, 56 )
@@ -241,10 +250,10 @@ position = Vector2( 1536, 56 )
 position = Vector2( 1624, 56 )
 
 [node name="Sconce6" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1064, 88 )
+position = Vector2( 1056, 96 )
 
 [node name="Sconce3" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 976, 88 )
+position = Vector2( 976, 96 )
 
 [node name="Sconce4" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 456, 112 )
@@ -299,7 +308,7 @@ shape = SubResource( 2 )
 position = Vector2( 392, 112 )
 
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 5 )]
-position = Vector2( 1112, 112 )
+position = Vector2( 1112, 120 )
 
 [node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 5 )]
 position = Vector2( 752, 88 )

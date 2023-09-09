@@ -144,7 +144,7 @@ radius = 8.0
 radius = 64.0
 
 [sub_resource type="CircleShape2D" id=12]
-radius = 16.0
+radius = 24.0
 
 [node name="Spirit_Basic" type="KinematicBody2D" groups=["absorbent", "enemy"]]
 collision_layer = 8
