@@ -150,7 +150,6 @@ margin_left = 30.0
 margin_top = 48.0
 margin_right = 288.0
 margin_bottom = 134.0
-spawn_limit = 5
 
 [node name="Camera" parent="." instance=ExtResource( 8 )]
 position = Vector2( 160, 88 )
