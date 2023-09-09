@@ -35,10 +35,13 @@ visible = false
 color = Color( 0, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 56, 96 )
+position = Vector2( 1640, 72 )
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 process_mode = 0
+
+[node name="Barricade" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1664, 80 )
 
 [node name="Terrain" type="StaticBody2D" parent="."]
 collision_mask = 0
@@ -86,8 +89,9 @@ color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect12" type="ColorRect" parent="Terrain"]
 margin_left = 1648.0
+margin_top = -64.0
 margin_right = 1792.0
-margin_bottom = 40.0
+margin_bottom = 32.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect8" type="ColorRect" parent="Terrain"]
@@ -360,12 +364,12 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 4.0
 color_ramp = SubResource( 3 )
 
-[node name="font" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="front" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color( 1, 1, 1, 0.0392157 )
 motion_scale = Vector2( 1.4, 1.4 )
 motion_mirroring = Vector2( 1000, 1000 )
 
-[node name="AmbientDust" type="CPUParticles2D" parent="ParallaxBackground/font"]
+[node name="AmbientDust" type="CPUParticles2D" parent="ParallaxBackground/front"]
 position = Vector2( 504, 136 )
 amount = 1000
 lifetime = 4.0
@@ -379,12 +383,9 @@ initial_velocity = 4.0
 scale_amount = 1.5
 color_ramp = SubResource( 3 )
 
-[node name="Barricade" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1664, 80 )
-
 [node name="Portal" parent="." instance=ExtResource( 13 )]
 margin_left = 1672.0
-margin_top = 40.0
+margin_top = 32.0
 margin_right = 1696.0
 margin_bottom = 80.0
 to_level = "res://Levels/_TestEnvironment.tscn"

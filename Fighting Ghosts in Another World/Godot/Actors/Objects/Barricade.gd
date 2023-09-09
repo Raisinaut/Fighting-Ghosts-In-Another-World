@@ -6,13 +6,13 @@ onready var disableSFX
 
 var open := false setget set_open
 var position_tween : SceneTreeTween = null
-var open_height := -40
+var open_height := 40
 
 var _discard = null
 
 
 func _ready():
-	set_open(false)
+	set_open(true)
 	_discard = GlobalEnemyLogic.connect("enemy_list_cleared", self, "set_open", [true])
 
 
@@ -30,6 +30,14 @@ func set_open(state):
 	position_tween = create_tween()
 	_discard = position_tween.set_ease(Tween.EASE_IN)
 	_discard = position_tween.set_trans(Tween.TRANS_QUAD)
-	_discard = position_tween.tween_property(sprite, "position:y", end_height, 0.4)
+#	_discard = position_tween.tween_property(sprite, "region_rect:position:y", end_height, 0.3)
+#	_discard = position_tween.tween_property(sprite, "region_rect:size:y", 48 - end_height, 0.3)
+	var tween_rect = Rect2(0, end_height, 16, 48 - end_height)
+	_discard = position_tween.tween_method(self, "set_region_rect", sprite.region_rect,tween_rect, 0.4 )
 	
 	collision.disabled = open
+
+
+func set_region_rect(rect : Rect2):
+	sprite.region_rect.position.y = rect.position.y
+	sprite.region_rect.size.y = rect.size.y

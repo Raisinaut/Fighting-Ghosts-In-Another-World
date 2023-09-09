@@ -8,7 +8,9 @@ onready var toggleTimer := $ToggleTimer
 var alternate_texture_enabled := false setget set_alternate_texture_enabled
 var _discard
 
+
 func _ready():
+	material.set_shader_param("flash", false)
 	_discard = toggleTimer.connect("timeout", self, "toggle_flash")
 
 
