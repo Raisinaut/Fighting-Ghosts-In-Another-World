@@ -61,7 +61,7 @@ color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 [node name="ColorRect5" type="ColorRect" parent="Terrain"]
 margin_left = 1520.0
 margin_top = 80.0
-margin_right = 1696.0
+margin_right = 1792.0
 margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
@@ -86,7 +86,7 @@ color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect12" type="ColorRect" parent="Terrain"]
 margin_left = 1648.0
-margin_right = 1696.0
+margin_right = 1792.0
 margin_bottom = 40.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
@@ -387,4 +387,4 @@ margin_left = 1672.0
 margin_top = 40.0
 margin_right = 1696.0
 margin_bottom = 80.0
-to_level = "res://Levels/level_2.tscn"
+to_level = "res://Levels/_TestEnvironment.tscn"

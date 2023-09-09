@@ -7,8 +7,13 @@ export var max_mp : int = 3
 
 onready var mp : int = max_mp setget set_mp # set onready to keep export value
 onready var restoreMP := $RestoreMP
+onready var restoreParticles := $RestoreParticles
 
 var _discard = null
+
+
+func _process(delta):
+	restoreParticles.global_position = get_parent().global_position
 
 func _ready():
 	_discard = connect("hp_changed", self, "_on_hp_changed")
@@ -23,6 +28,7 @@ func set_mp(value):
 		return
 	elif value > mp:
 		restoreMP.play()
+		restoreParticles.emitting = true
 	mp = value
 	emit_signal("mp_changed", mp)
 	if mp == max_mp:
