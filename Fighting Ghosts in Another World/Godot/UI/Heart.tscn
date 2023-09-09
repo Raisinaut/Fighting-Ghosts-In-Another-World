@@ -15,4 +15,4 @@ frame_1/delay_sec = 0.0
 margin_right = 16.0
 margin_bottom = 16.0
 texture = SubResource( 2 )
-stretch_mode = 3
+stretch_mode = 4

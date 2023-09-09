@@ -8,8 +8,8 @@ onready var reticle_sprite = $Pivot/Reticle/Sprite
 onready var reticle_range : int = reticle.position.x
 onready var reticle_offset := Vector2(0, -8)
 # SFX
-onready var sweep = $sweep
-onready var activate = $activate
+onready var sweep = $Sweep
+onready var activate = $Activate
 # tweens
 var slide_tween : SceneTreeTween = null # slides the reticle on enable
 # checks

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Land.wav-de35feb157b846fdf80b629e3ffa8678.sample"
+path="res://.import/door_creak_1.wav-664a16f396ba05eff50d374a5dd6591a.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Player Movement/Land.wav"
-dest_files=[ "res://.import/Land.wav-de35feb157b846fdf80b629e3ffa8678.sample" ]
+source_file="res://Assets/Audio/Environment/door_creak_1.wav"
+dest_files=[ "res://.import/door_creak_1.wav-664a16f396ba05eff50d374a5dd6591a.sample" ]
 
 [params]
 

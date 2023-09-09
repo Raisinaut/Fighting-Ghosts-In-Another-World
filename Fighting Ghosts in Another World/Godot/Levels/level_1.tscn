@@ -35,7 +35,7 @@ visible = false
 color = Color( 0, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 520, 120 )
+position = Vector2( 56, 96 )
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 process_mode = 0
@@ -52,21 +52,21 @@ margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect4" type="ColorRect" parent="Terrain"]
-margin_left = 1272.0
+margin_left = 1264.0
 margin_top = 168.0
-margin_right = 1528.0
+margin_right = 1520.0
 margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect5" type="ColorRect" parent="Terrain"]
-margin_left = 1528.0
+margin_left = 1520.0
 margin_top = 80.0
-margin_right = 1704.0
+margin_right = 1696.0
 margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect6" type="ColorRect" parent="Terrain"]
-margin_left = 1368.0
+margin_left = 1344.0
 margin_top = 80.0
 margin_right = 1464.0
 margin_bottom = 120.0
@@ -85,8 +85,8 @@ margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect12" type="ColorRect" parent="Terrain"]
-margin_left = 1672.0
-margin_right = 1704.0
+margin_left = 1648.0
+margin_right = 1696.0
 margin_bottom = 40.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
@@ -178,7 +178,7 @@ __meta__ = {
 position = Vector2( -16, 0 )
 
 [node name="PlatformGroup8" parent="Platforms" instance=ExtResource( 10 )]
-position = Vector2( 1512, 136 )
+position = Vector2( 1504, 136 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -188,16 +188,11 @@ __meta__ = {
 [node name="ghostly_platform2" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="PlatformGroup9" parent="Platforms" instance=ExtResource( 10 )]
-position = Vector2( 1480, 104 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="ghostly_platform3" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
+position = Vector2( -24, -32 )
 
-[node name="ghostly_platform" parent="Platforms/PlatformGroup9" instance=ExtResource( 3 )]
-
-[node name="ghostly_platform2" parent="Platforms/PlatformGroup9" instance=ExtResource( 3 )]
-position = Vector2( -16, 0 )
+[node name="ghostly_platform4" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
+position = Vector2( -40, -32 )
 
 [node name="PlatformGroup7" parent="Platforms" instance=ExtResource( 10 )]
 position = Vector2( 1192, 112 )
@@ -221,25 +216,31 @@ position = Vector2( 784, 64 )
 position = Vector2( 1160, 88 )
 
 [node name="Sconce5" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1384, 56 )
+position = Vector2( 1360, 56 )
 
 [node name="Sconce9" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 1440, 56 )
 
 [node name="Sconce10" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1448, 144 )
+position = Vector2( 1440, 144 )
+
+[node name="Sconce19" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 1440, 144 )
+
+[node name="Sconce20" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 1320, 144 )
 
 [node name="Sconce11" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1544, 56 )
+position = Vector2( 1536, 56 )
 
 [node name="Sconce12" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 1624, 56 )
 
 [node name="Sconce6" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 1056, 88 )
+position = Vector2( 1064, 88 )
 
 [node name="Sconce3" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 968, 88 )
+position = Vector2( 976, 88 )
 
 [node name="Sconce4" parent="Lights" instance=ExtResource( 9 )]
 position = Vector2( 456, 112 )
@@ -270,25 +271,22 @@ position = Vector2( 144, 88 )
 
 [node name="Pits" type="Node" parent="."]
 
-[node name="DeathTrigger" parent="Pits" instance=ExtResource( 8 )]
-position = Vector2( 1144, 192 )
+[node name="Pit3" parent="Pits" instance=ExtResource( 8 )]
+position = Vector2( 1208, 216 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pits/DeathTrigger"]
-position = Vector2( 120, 24 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pits/Pit3"]
 shape = SubResource( 1 )
 
 [node name="Pit" parent="Pits" instance=ExtResource( 8 )]
-position = Vector2( 768, 192 )
+position = Vector2( 424, 216 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pits/Pit"]
-position = Vector2( -344, 24 )
 shape = SubResource( 2 )
 
 [node name="Pit2" parent="Pits" instance=ExtResource( 8 )]
-position = Vector2( 1224, 192 )
+position = Vector2( 880, 216 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pits/Pit2"]
-position = Vector2( -344, 24 )
 shape = SubResource( 2 )
 
 [node name="Checkpoints" type="Node" parent="."]
@@ -311,13 +309,13 @@ position = Vector2( 688, 72 )
 position = Vector2( 728, 72 )
 
 [node name="Spirit_Basic5" parent="Enemies" instance=ExtResource( 1 )]
-position = Vector2( 1304, 80 )
+position = Vector2( 1424, 152 )
 
 [node name="Spirit_Basic6" parent="Enemies" instance=ExtResource( 1 )]
-position = Vector2( 1584, 40 )
+position = Vector2( 1576, 40 )
 
 [node name="Spirit_Basic7" parent="Enemies" instance=ExtResource( 1 )]
-position = Vector2( 1504, 8 )
+position = Vector2( 1496, 8 )
 
 [node name="Spirit_Basic3" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 328, 96 )
@@ -382,11 +380,11 @@ scale_amount = 1.5
 color_ramp = SubResource( 3 )
 
 [node name="Barricade" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1688, 80 )
+position = Vector2( 1664, 80 )
 
 [node name="Portal" parent="." instance=ExtResource( 13 )]
-margin_left = 1696.0
+margin_left = 1672.0
 margin_top = 40.0
-margin_right = 1704.0
+margin_right = 1696.0
 margin_bottom = 80.0
 to_level = "res://Levels/level_2.tscn"

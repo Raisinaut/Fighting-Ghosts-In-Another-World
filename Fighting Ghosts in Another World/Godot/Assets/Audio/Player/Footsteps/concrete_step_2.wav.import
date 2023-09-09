@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/concrete_step_5.wav-ce0b2878531efb0fea898c4172095e95.sample"
+path="res://.import/concrete_step_2.wav-f1fa9b581ef2cf719d80cda4e9f7bb13.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Player Movement/Footsteps/concrete_step_5.wav"
-dest_files=[ "res://.import/concrete_step_5.wav-ce0b2878531efb0fea898c4172095e95.sample" ]
+source_file="res://Assets/Audio/Player/Footsteps/concrete_step_2.wav"
+dest_files=[ "res://.import/concrete_step_2.wav-f1fa9b581ef2cf719d80cda4e9f7bb13.sample" ]
 
 [params]
 

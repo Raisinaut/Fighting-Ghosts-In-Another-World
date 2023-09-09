@@ -2,6 +2,7 @@ extends StaticBody2D
 
 onready var sprite = $Sprite
 onready var collision := $CollisionShape2D
+onready var disableSFX
 
 var open := false setget set_open
 var position_tween : SceneTreeTween = null
@@ -20,6 +21,7 @@ func set_open(state):
 	var end_height : int
 	if open:
 		end_height = open_height
+		$DisableSFX.play()
 	else:
 		end_height = 0
 	

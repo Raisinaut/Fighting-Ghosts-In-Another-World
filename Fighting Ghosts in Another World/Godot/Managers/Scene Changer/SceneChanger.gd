@@ -4,6 +4,7 @@ extends Node
 # Credit to Tiny Legions (YouTube) AKA PhillipWee (Github) #
 #############################################################
 
+signal changing_scene
 signal scene_changed
 
 export var max_load_time = 10000

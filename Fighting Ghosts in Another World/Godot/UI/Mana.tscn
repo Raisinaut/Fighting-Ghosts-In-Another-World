@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Textures/UI/mana1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/UI/mana2.png" type="Texture" id=2]
+
+[sub_resource type="AnimatedTexture" id=2]
+resource_local_to_scene = true
+frames = 2
+pause = true
+frame_0/texture = ExtResource( 1 )
+frame_1/texture = ExtResource( 2 )
+frame_1/delay_sec = 0.0
+
+[node name="Mana" type="TextureRect"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = SubResource( 2 )
+stretch_mode = 3

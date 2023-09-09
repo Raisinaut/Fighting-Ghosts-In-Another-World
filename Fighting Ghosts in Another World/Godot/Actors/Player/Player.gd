@@ -11,9 +11,10 @@ onready var sprite := $AnimatedSprite
 onready var coyoteTimer = $CoyoteTimer
 onready var jumpBuffer = $JumpBuffer
 onready var dustParticles = $DustParticles
+onready var chargeParticles = $ChargeParticles
 onready var movingReticle = get_node("%MovingReticle")
 onready var collisionShape = $CollisionShape2D
-onready var sfx2d = $SFX2D
+onready var sfx = $SFX
 onready var hurtbox = $HurtBox
 
 export(int, 0, 200, 5) var move_speed := 80
@@ -53,7 +54,6 @@ var state = STATES.MOVE setget set_state
 func _ready():
 	CheckpointManager.spawn_location = global_position
 	GlobalEnemyLogic.player_node = self
-	$HUD.hp.set_max($Stats.max_hp)
 
 
 func _process(_delta):
@@ -62,6 +62,7 @@ func _process(_delta):
 
 
 func _physics_process(delta):
+	
 	match(state):
 		STATES.MOVE:
 			# CHECKS
@@ -132,7 +133,7 @@ func _physics_process(delta):
 				if was_falling:
 					dustParticles.emit()
 					sprite.play("land")
-					sfx2d.play_at_random_pitch(sfx2d.land)
+					sfx.play_at_random_pitch(sfx.land)
 				set_bullet_time(false)
 				gravity = gravity_normal
 				just_jumped = false
@@ -146,7 +147,7 @@ func _physics_process(delta):
 			var is_landing : bool = sprite.playing == true and sprite.animation == "land"
 			
 			if is_jumping:
-				sfx2d.play_at_random_pitch(sfx2d.jump)
+				sfx.play_at_random_pitch(sfx.jump)
 				sprite.play("jump")
 			elif is_idling and not is_landing:
 				sprite.play("idle")
@@ -237,7 +238,7 @@ func _unhandled_input(event):
 				m.connect("impacted_target", $Stats, "restore_mp", [1])
 				movingReticle.set_enabled(false)
 				set_bullet_time(false)
-				sfx2d.play_at_random_pitch(sfx2d.launch)
+				sfx.play_at_random_pitch(sfx.launch)
 			
 		elif Input.is_action_pressed("cancel_throw"):
 			movingReticle.set_enabled(false)
@@ -248,6 +249,7 @@ func _unhandled_input(event):
 		if Input.is_action_just_pressed("jump"):
 			jumpBuffer.start()
 
+
 func set_input_direction():
 	if not $ChargeTimer.is_stopped():
 		return
@@ -257,19 +259,26 @@ func set_input_direction():
 		if Input.is_action_just_pressed("jump"):
 			jumpBuffer.start()
 
+
 func charge_logic():
+	# Particles
+	chargeParticles.emitting = is_charging()
 	# Charge
 	if Input.is_action_pressed("charge"):
-		if is_on_floor():
-#			print("Charging: ", $ChargeTimer.time_left)
+		if is_on_floor() and $Stats.mp < $Stats.max_mp:
 			if $ChargeTimer.is_stopped():
 				$ChargeTimer.start()
+#				chargeParticles.emitting = true
+				sfx.charge.play()
 				movingReticle.set_enabled(false)
+			sfx.charge.pitch_scale = range_lerp($ChargeTimer.time_left, $ChargeTimer.wait_time, 0, 1 + $Stats.mp, 2 + $Stats.mp)
 			input_direction = 0
 			return
 	elif Input.is_action_just_released("charge"):
 		if not $ChargeTimer.is_stopped():
 			$ChargeTimer.stop()
+			chargeParticles.emitting = false
+			sfx.charge.stop()
 
 
 func take_damage(amount):
@@ -280,13 +289,20 @@ func take_damage(amount):
 	if $Stats.hp - amount > 0:
 		sprite.flash(hurtbox.invincibilty_duration)
 	$Stats.set_hp($Stats.hp - amount)
-	$HUD.hp.set_current($Stats.hp)
 	emit_signal("damaged")
-	sfx2d.play_at_random_pitch(sfx2d.damaged)
+	sfx.play_at_random_pitch(sfx.damaged)
 	set_bullet_time(false)
 	set_frame_freeze(true)
 	just_damaged = true
+	# parse charge button released action to stop charge
+	fake_input("charge", false)
 
+
+func fake_input(input_name : String, pressed : bool):
+	var a = InputEventAction.new()
+	a.action = input_name
+	a.pressed = false
+	Input.parse_input_event(a)
 
 
 # sets knockback dependent on current velocity direction
@@ -349,12 +365,17 @@ func instance_scene(scene : PackedScene) -> Node2D:
 
 func _on_AnimatedSprite_frame_changed():
 	if sprite.animation == "run" and sprite.frame == 1:
-		sfx2d.play_at_random_pitch(sfx2d.footstep)
+		sfx.play_at_random_pitch(sfx.footstep)
 
 
 func _on_Stats_hp_depleted():
 	set_state(STATES.DEAD)
 
-
 func _on_ChargeTimer_timeout():
-	$Stats.mp += 1
+	$Stats.restore_mp(1)
+
+func _on_Stats_mp_full():
+	sfx.charge.stop()
+
+func is_charging():
+	return not $ChargeTimer.is_stopped()

@@ -3,6 +3,7 @@ extends CanvasLayer
 onready var spiritCount = get_node("%SpiritCount")
 onready var spiritCountPos = spiritCount.rect_position
 onready var hp = get_node("%HP")
+onready var mp = get_node("%MP")
 
 var bump_tween : SceneTreeTween = null
 var fade_tween : SceneTreeTween = null

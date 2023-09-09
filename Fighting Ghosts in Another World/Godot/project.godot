@@ -108,7 +108,7 @@ CheckpointManager="*res://Managers/CheckpointManager.gd"
 MusicPlayer="*res://Managers/MusicPlayer.tscn"
 GlobalEnemyLogic="*res://Managers/GlobalEnemyLogic.tscn"
 SceneChanger="*res://Managers/Scene Changer/SceneChanger.tscn"
-ProgressManager="*res://Managers/ProgressManager.tscn"
+Global="*res://Managers/Global.tscn"
 
 [display]
 

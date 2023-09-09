@@ -7,11 +7,12 @@ onready var land = $Land
 onready var footstep = $Footstep
 onready var launch = $Launch
 onready var damaged = $Damaged
+onready var charge = $Charge
 
 func _ready():
 	randomize()
 
-func play_at_random_pitch(sound : AudioStreamPlayer2D):
+func play_at_random_pitch(sound):
 	if not sound.playing:
 		sound.pitch_scale = get_random_pitch_value()
 		sound.play()

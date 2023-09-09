@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Damaged.wav-c41b40c6e50df720d5e974ccdbb7e4b8.sample"
+path="res://.import/mana_restore.wav-c73725467969c64a8bcee6ded9d626ce.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Player Movement/Damaged.wav"
-dest_files=[ "res://.import/Damaged.wav-c41b40c6e50df720d5e974ccdbb7e4b8.sample" ]
+source_file="res://Assets/Audio/UI and HUD/mana_restore.wav"
+dest_files=[ "res://.import/mana_restore.wav-c73725467969c64a8bcee6ded9d626ce.sample" ]
 
 [params]
 

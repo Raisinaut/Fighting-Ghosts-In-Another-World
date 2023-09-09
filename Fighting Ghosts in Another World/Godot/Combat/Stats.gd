@@ -14,7 +14,7 @@ func set_hp(value):
 	if hp == value:
 		return
 	hp = value
-	emit_signal("hp_changed")
+	emit_signal("hp_changed", hp)
 	if hp <= 0:
 		emit_signal("hp_depleted")
 
