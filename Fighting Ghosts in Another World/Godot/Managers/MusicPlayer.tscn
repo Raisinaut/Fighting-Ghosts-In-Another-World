@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Managers/MusicPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/Music/REBORN - Tomorrow, We Die OGG (Loopable).ogg" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Audio/Music/REBORN - Battle for Mana OGG (Loopable).ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/Music/REBORN - Lingering Evil OGG (Loopable).ogg" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Audio/Music/Mystical Town (Loop).ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/Music/REBORN - Thoughts OGG (Loopable).ogg" type="AudioStream" id=6]
 
 [node name="MusicPlayer" type="Node"]
 script = ExtResource( 1 )
+fade_time = 3.0
+serene = ExtResource( 6 )
 exploring = ExtResource( 5 )
 foreboding = ExtResource( 4 )
 battle_1 = ExtResource( 2 )

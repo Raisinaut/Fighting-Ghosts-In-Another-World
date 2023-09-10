@@ -23,7 +23,8 @@ func start_dialog(timeline_name):
 	var dialog = Dialogic.start(timeline_name)
 	dialog.connect("timeline_start", self, "_on_timeline_start")
 	dialog.connect("timeline_end", self, "_on_timeline_end")
-	get_tree().get_root().call_deferred("add_child", dialog)
+#	get_tree().get_root().call_deferred("add_child", dialog)
+	get_tree().get_root().add_child(dialog)
 	return dialog
 
 func _on_timeline_start(_timeline_name):

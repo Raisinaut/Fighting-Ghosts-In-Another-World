@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/REBORN - Thoughts OGG (Loopable).ogg-f3738f0d7abb90b187c016d7f3a9485d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/REBORN - Thoughts OGG (Loopable).ogg"
+dest_files=[ "res://.import/REBORN - Thoughts OGG (Loopable).ogg-f3738f0d7abb90b187c016d7f3a9485d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

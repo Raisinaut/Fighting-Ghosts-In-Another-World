@@ -4,7 +4,7 @@
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "What’s this?\nA lost soul, displaced so early? "
+			"text": "What’s this?\nA lost soul displaced so early? "
 		},
 		{
 			"animation": "[Default]",
@@ -30,24 +30,141 @@
 			"character": "character-1694287632.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Who are you?"
+			"text": "Am I... dead?"
 		},
 		{
-			"character": "character-1694288070.json",
+			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "My name is Meghana.\nI’m a goddess, and I can grant you renewed life."
+			"text": "Unfortunately yes, little Marta."
 		},
 		{
 			"character": "character-1694287632.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I… don’t know if I’m worth that."
+			"text": "How do you know my name?"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I know a many things...\nI am a goddess after all."
+		},
+		{
+			"animation": "1-fade_in.gd",
+			"animation_length": 1,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "My name is Meghana.\nAnd I can grant you renewed life."
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "A goddess..."
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Marta...\nYou had such great potential but were sadly cut short of reaching it.\nI know that you will do great things if you take my offer. \nThough, I would have a favor to ask of you in return…"
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "A favor?"
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah, you see my chapels have been plagued by vicious spirits recently, scaring off my disciples.\nThese spirits have crossed fully into the physical realm.\nNormally, I would take care of them myself, but I lack a physical form of my own to combat them.\nAlas, they are beyond my reach."
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Well... I would like to help, but how am I supposed to deal with scary spirits?\nI was never able to talk to ghosts or anything before."
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There are others in my world who have helped me in the past.\nMost didn't didn't think they were up to the task initially.\nBut I gifted them all [wave amp=10 freq=4]magical powers[/wave] and would do the same for you, Marta.\nThese powers would even be yours to keep."
+		},
+		{
+			"animation": "pulse.gd",
+			"animation_length": 0.3,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "TEEHEE",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Magical powers!"
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Does that reaction mean are you accepting my offer?"
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yes of course!"
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Then let’s get you reincarnated shall we?"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.5",
 		"file": "timeline-1694287937.json",
-		"name": "Opening"
+		"name": "Introduction"
 	}
 }

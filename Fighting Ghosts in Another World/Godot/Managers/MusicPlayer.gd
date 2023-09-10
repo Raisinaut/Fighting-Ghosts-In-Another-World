@@ -2,6 +2,7 @@ extends Node
 
 export var fade_time : float = 2
 
+export var serene : AudioStream = null
 export var exploring : AudioStream = null
 export var foreboding : AudioStream = null
 export var battle_1 : AudioStream = null
