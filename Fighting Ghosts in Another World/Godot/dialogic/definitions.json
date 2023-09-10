@@ -1,0 +1,25 @@
+{
+	"glossary": [
+
+	],
+	"variables": [
+		{
+			"id": "1694307476-794",
+			"name": "throw_input",
+			"type": 0,
+			"value": ""
+		},
+		{
+			"id": "1694308158-855",
+			"name": "charge_input",
+			"type": 0,
+			"value": ""
+		},
+		{
+			"id": "1694308378-641",
+			"name": "jump_input",
+			"type": 0,
+			"value": ""
+		}
+	]
+}

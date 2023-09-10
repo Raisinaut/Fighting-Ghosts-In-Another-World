@@ -1,0 +1,21 @@
+{
+	"color": "#ff85c448",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1694288070.json",
+	"mirror_portraits": false,
+	"name": "Meghana",
+	"nickname": "Meg",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

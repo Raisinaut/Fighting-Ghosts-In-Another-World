@@ -8,6 +8,8 @@ onready var player_node = get_tree().get_nodes_in_group("Player")[0]
 var current_area = null
 var zoom_tween : SceneTreeTween = null
 
+var _discard = null
+
 
 
 func _ready():
@@ -18,7 +20,7 @@ func small_shake() -> void:
 	screenShake.start(0.15, 20, 4, 0)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player_node.is_charging():
 		tween_zoom(Vector2.ONE * 0.9, 0.5)
 	else:
@@ -28,8 +30,8 @@ func _physics_process(delta):
 
 func tween_zoom(zoom_vec : Vector2, duration : float = 1):
 	zoom_tween = create_tween()
-	zoom_tween.set_ease(Tween.EASE_IN)
-	zoom_tween.tween_property(self, "zoom", zoom_vec, duration)
+	_discard = zoom_tween.set_ease(Tween.EASE_IN)
+	_discard = zoom_tween.tween_property(self, "zoom", zoom_vec, duration)
 
 
 func _on_AreaDetection_area_entered(area):

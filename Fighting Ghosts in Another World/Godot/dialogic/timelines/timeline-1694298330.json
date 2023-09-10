@@ -1,0 +1,77 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Where am I?"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "One of my  [wave amp=10 freq=4]many[/wave] chapels.\nHm… It looks like the ghosts’ negative energy has sealed the room.\nMeaning the exits should open once they’ve all been dealt with."
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "So I’m trapped here with them?"
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Considering the power I have [wave amp=10 freq=4]graciously[/wave] bestowed upon you...\nI think it’s fair to say they are trapped here with you.\nGo ahead and press [throw_input] to take aim, then again unleash your ability!"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.5
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.5",
+		"file": "timeline-1694298330.json",
+		"name": "TutThrowA"
+	}
+}

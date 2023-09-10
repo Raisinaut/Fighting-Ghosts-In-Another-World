@@ -14,14 +14,21 @@ var target_override : Node2D = null setget set_target_override
  
 var enemy_list : Array = [] setget set_enemy_list
 var spawner_enemy_count : int = 0
+var enemy_list_checked = false
+var spawners_checked = false
 
+
+var _discard = null
 
 func _ready():
 	SceneChanger.connect("scene_changed", self, "refresh_lists")
-	self.connect("enemy_list_modified", self, "sum_total_count")
-	self.connect("spawner_enemy_count_modified", self, "sum_total_count")
+	_discard = self.connect("spawner_enemy_count_modified", self, "sum_total_count")
+	_discard = self.connect("enemy_list_modified", self, "sum_total_count")
+	
 
 func refresh_lists():
+	enemy_list_checked = false
+	spawners_checked = false
 	enemies = get_tree().get_nodes_in_group("enemy")
 	set_enemy_list(enemies)
 	for e in enemy_list:
@@ -34,6 +41,7 @@ func refresh_lists():
 
 func set_enemy_list(arr):
 	enemy_list = arr
+	enemy_list_checked = true
 	emit_signal("enemy_list_modified")
 
 func sum_spawner_enemy_count():
@@ -41,13 +49,15 @@ func sum_spawner_enemy_count():
 	for s in spawners:
 		sum += s.get_remaining()
 	spawner_enemy_count = sum
+	spawners_checked = true
 	emit_signal("spawner_enemy_count_modified")
 
 func sum_total_count():
 	var total = enemy_list.size() + spawner_enemy_count
 	emit_signal("total_enemy_count_changed", total)
-	if total == 0:
-		emit_signal("all_enemies_defeated")
+	if enemy_list_checked and spawners_checked:
+		if total == 0:
+			emit_signal("all_enemies_defeated")
 
 func erase_enemy(e):
 	if enemy_list.has(e):

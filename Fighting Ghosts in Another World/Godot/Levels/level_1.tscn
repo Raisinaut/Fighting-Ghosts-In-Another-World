@@ -35,7 +35,7 @@ visible = false
 color = Color( 0, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 48, 104 )
+position = Vector2( 96, 112 )
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 process_mode = 0
@@ -203,11 +203,16 @@ __meta__ = {
 [node name="ghostly_platform2" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
 position = Vector2( -16, 0 )
 
-[node name="ghostly_platform3" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
-position = Vector2( -24, -32 )
+[node name="PlatformGroup9" parent="Platforms" instance=ExtResource( 10 )]
+position = Vector2( 1480, 104 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="ghostly_platform4" parent="Platforms/PlatformGroup8" instance=ExtResource( 3 )]
-position = Vector2( -40, -32 )
+[node name="ghostly_platform" parent="Platforms/PlatformGroup9" instance=ExtResource( 3 )]
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup9" instance=ExtResource( 3 )]
+position = Vector2( -16, 0 )
 
 [node name="Chandeliers" type="Node" parent="."]
 

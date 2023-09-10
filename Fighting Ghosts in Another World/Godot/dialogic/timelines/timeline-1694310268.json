@@ -1,0 +1,61 @@
+{
+	"events": [
+		{
+			"animation": "1-fade_in.gd",
+			"animation_length": 0.3,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "TEEHEE",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I did it!\nI beat them all!"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yes very good.\nAnd as I suspected, the passage appears to be accessible now.\nGo ahead and continue on."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.5",
+		"file": "timeline-1694310268.json",
+		"name": "FirstDoorUnlock"
+	}
+}

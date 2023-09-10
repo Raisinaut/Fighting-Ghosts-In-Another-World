@@ -97,6 +97,9 @@ func _physics_process(delta):
 	
 	
 	# Move
+	if Global.dialog_is_active:
+		return
+	
 	if target and stunTimer.is_stopped():
 		var chase_height_offset := Vector2(0, -8)
 		var direction_to_target = global_position.direction_to(target.global_position + chase_height_offset)
@@ -208,7 +211,6 @@ func defeated():
 	yield(fade_out(stun_duration), "finished")
 	if $DeafeatedSFX.playing:
 		yield($DeafeatedSFX, "finished")
-#	emit_signal("defeated")
 	queue_free()
 
 

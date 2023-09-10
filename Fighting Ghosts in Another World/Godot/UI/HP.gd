@@ -2,7 +2,7 @@ extends HBoxContainer
 
 export var icon : PackedScene = null
 
-var flash_tween : SceneTreeTween = null
+#var flash_tween : SceneTreeTween = null
 var bump_tween : SceneTreeTween = null
 var _discard = null
 
@@ -26,8 +26,8 @@ func set_current(value : int):
 func flash(node : Control, duration : float = 0.4):
 	node.modulate = Color.white * 20
 	
-	if flash_tween:
-		flash_tween.kill()
+#	if flash_tween:
+#		flash_tween.kill() 
 	var flash_tween = create_tween()
 	_discard = flash_tween.set_ease(Tween.EASE_OUT)
 	_discard = flash_tween.set_trans(Tween.TRANS_CIRC)

@@ -1,0 +1,29 @@
+{
+	"color": "#ffb74228",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1694287632.json",
+	"mirror_portraits": false,
+	"name": "Marta",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": -16,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Assets/Portraits/Marta_default.png"
+		},
+		{
+			"name": "",
+			"path": ""
+		},
+		{
+			"name": "TEEHEE",
+			"path": "res://Assets/Portraits/Marta_TEEHEE.png"
+		}
+	],
+	"scale": 3,
+	"theme": ""
+}

@@ -40,7 +40,7 @@ func _on_SpawnTimer_timeout():
 		enemy_inst.global_position = offset
 		enemy_inst.aggressive = true
 		enemy_inst.add_to_group(self.name)
-		enemy_inst.connect("defeated", self, "increment_num_defeated")
+		_discard = enemy_inst.connect("defeated", self, "increment_num_defeated")
 	start_timer_varied()
 
 

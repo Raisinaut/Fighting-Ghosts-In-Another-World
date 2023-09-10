@@ -12,7 +12,7 @@ onready var restoreParticles := $RestoreParticles
 var _discard = null
 
 
-func _process(delta):
+func _process(_delta):
 	restoreParticles.global_position = get_parent().global_position
 
 func _ready():

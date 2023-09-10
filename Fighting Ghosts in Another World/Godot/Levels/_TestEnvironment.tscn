@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Actors/Platforms/ghostly_platform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Textures/Levels/tavern_bkg.png" type="Texture" id=3]
 [ext_resource path="res://Actors/SpawnArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Textures/Levels/tavern_frg.png" type="Texture" id=5]
 [ext_resource path="res://Actors/Objects/Chandelier.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Actors/Platforms/PlatformGroup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Actors/Camera/Camera.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/_TestEnvironment.gd" type="Script" id=9]
 [ext_resource path="res://Actors/Camera/CameraArea.tscn" type="PackedScene" id=12]
@@ -150,20 +148,10 @@ margin_left = 30.0
 margin_top = 48.0
 margin_right = 288.0
 margin_bottom = 134.0
+spawn_limit = 15
 
 [node name="Camera" parent="." instance=ExtResource( 8 )]
 position = Vector2( 160, 88 )
-
-[node name="PlatformGroup" parent="." instance=ExtResource( 7 )]
-position = Vector2( 264, 128 )
-
-[node name="ghostly_platform" parent="PlatformGroup" instance=ExtResource( 2 )]
-position = Vector2( 16, 0 )
-
-[node name="ghostly_platform2" parent="PlatformGroup" instance=ExtResource( 2 )]
-position = Vector2( -16, 0 )
-
-[node name="ghostly_platform3" parent="PlatformGroup" instance=ExtResource( 2 )]
 
 [node name="CameraArea" parent="." instance=ExtResource( 12 )]
 margin_right = 320.0

@@ -21,6 +21,8 @@ func goto_scene(path, show_loading_progress = false):
 		print("Resource loader unable to load the resource at path.")
 		return
 	
+	emit_signal("changing_scene")
+	
 	var loading_screen = LoadingScreen.instance()
 	get_tree().get_root().call_deferred("add_child", loading_screen)
 	yield(loading_screen, "faded_in")

@@ -57,6 +57,10 @@ func _ready():
 
 
 func _process(_delta):
+	if Global.dialog_is_active:
+		return
+	if Global.throw_tutorial_active:
+		return
 	charge_logic()
 	set_input_direction()
 
@@ -217,6 +221,9 @@ func set_state(s):
 
 # Sets input direction and starts buffer timers
 func _unhandled_input(event):
+	if Global.dialog_is_active:
+		return
+	
 	if state != STATES.MOVE:
 		return
 	
@@ -239,11 +246,18 @@ func _unhandled_input(event):
 				movingReticle.set_enabled(false)
 				set_bullet_time(false)
 				sfx.play_at_random_pitch(sfx.launch)
+				if Global.throw_tutorial_active:
+					Global.throw_tutorial_finished = true
+					Global.throw_tutorial_active = false
 			
 		elif Input.is_action_pressed("cancel_throw"):
 			movingReticle.set_enabled(false)
 			set_bullet_time(false)
 	
+	
+	if Global.throw_tutorial_active:
+		return
+		
 	# Jump
 	if not bullet_time:
 		if Input.is_action_just_pressed("jump"):
@@ -303,7 +317,7 @@ func take_damage(amount):
 func fake_input(input_name : String, pressed : bool):
 	var a = InputEventAction.new()
 	a.action = input_name
-	a.pressed = false
+	a.pressed = pressed
 	Input.parse_input_event(a)
 
 
