@@ -13,7 +13,7 @@ export var LoadingScreen : PackedScene = null
 var current_scene_path := ""
 
 # Caller nodes must pass "self" as the current_scene
-func goto_scene(path, show_loading_progress = false):
+func goto_scene(path : String, show_loading_progress := false, fade_color := Color.black):
 	var current_scene = get_current_scene()
 	var loader = ResourceLoader.load_interactive(path)
 	
@@ -25,6 +25,8 @@ func goto_scene(path, show_loading_progress = false):
 	
 	var loading_screen = LoadingScreen.instance()
 	get_tree().get_root().call_deferred("add_child", loading_screen)
+	yield(get_tree(), "idle_frame")
+	loading_screen.set_fade_color(fade_color)
 	yield(loading_screen, "faded_in")
 	current_scene.queue_free()
 	

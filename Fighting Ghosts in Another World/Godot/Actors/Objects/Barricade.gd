@@ -1,8 +1,11 @@
 extends StaticBody2D
 
+signal open_set
+
+export var can_open := true
+
 onready var sprite = $Sprite
 onready var collision := $CollisionShape2D
-onready var disableSFX
 
 var open := false setget set_open
 var position_tween : SceneTreeTween = null
@@ -13,15 +16,17 @@ var _discard = null
 
 func _ready():
 	set_open(false)
-	_discard = GlobalEnemyLogic.connect("all_enemies_defeated", self, "set_open", [true])
+	if can_open:
+		_discard = GlobalEnemyLogic.connect("all_enemies_defeated", self, "set_open", [true])
 
 
 func set_open(state):
 	open = state
+	
+	$CreakSFX.play()
 	var end_height : int
 	if open:
 		end_height = open_height
-		$DisableSFX.play()
 	else:
 		end_height = 0
 	
@@ -33,11 +38,12 @@ func set_open(state):
 #	_discard = position_tween.tween_property(sprite, "region_rect:position:y", end_height, 0.3)
 #	_discard = position_tween.tween_property(sprite, "region_rect:size:y", 48 - end_height, 0.3)
 	var tween_rect = Rect2(0, end_height, 16, 48 - end_height)
-	_discard = position_tween.tween_method(self, "set_region_rect", sprite.region_rect,tween_rect, 0.4 )
+	_discard = position_tween.tween_method(self, "_set_region_rect", sprite.region_rect,tween_rect, 0.4 )
 	
 	collision.set_deferred("disabled", open)
+	emit_signal("open_set", open)
 
 
-func set_region_rect(rect : Rect2):
+func _set_region_rect(rect : Rect2):
 	sprite.region_rect.position.y = rect.position.y
 	sprite.region_rect.size.y = rect.size.y

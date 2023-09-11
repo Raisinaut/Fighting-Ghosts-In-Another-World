@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/level_0.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="level_0" type="Node2D"]
+script = ExtResource( 1 )
+song_name = "serene"
+next_scene = "res://Levels/level_1.tscn"
+
+[node name="Dust" type="ParallaxBackground" parent="."]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
+
+[node name="Front" type="ParallaxLayer" parent="Dust"]
+motion_scale = Vector2( 2, 2 )
+motion_mirroring = Vector2( 320, 180 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Dust/Front"]
+amount = 100
+lifetime = 4.0
+preprocess = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 160, 90 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 6.0
+initial_velocity_random = 1.0
+color = Color( 1, 1, 1, 0.129412 )
+color_ramp = SubResource( 1 )
+
+[node name="Middle" type="ParallaxLayer" parent="Dust"]
+motion_mirroring = Vector2( 320, 180 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Dust/Middle"]
+amount = 100
+lifetime = 4.0
+preprocess = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 160, 90 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 6.0
+initial_velocity_random = 1.0
+scale_amount = 0.5
+color_ramp = SubResource( 1 )
+
+[node name="Back" type="ParallaxLayer" parent="Dust"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 320, 180 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Dust/Back"]
+amount = 100
+lifetime = 4.0
+preprocess = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 160, 90 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 6.0
+initial_velocity_random = 1.0
+scale_amount = 0.2
+color = Color( 1, 1, 1, 0.843137 )
+color_ramp = SubResource( 1 )

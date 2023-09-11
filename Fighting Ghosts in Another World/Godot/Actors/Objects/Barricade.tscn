@@ -15,13 +15,13 @@ position = Vector2( -8, -48 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 16, 48 )
+region_rect = Rect2( 0, 40, 16, 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -24 )
 shape = SubResource( 1 )
 
-[node name="DisableSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="CreakSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = -4.0
 attenuation = 1e-05

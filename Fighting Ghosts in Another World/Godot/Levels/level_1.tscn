@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Actors/Spirits/Spirit_Basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Camera/CameraArea.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Levels/TempTerrain.gd" type="Script" id=11]
 [ext_resource path="res://Levels/level_1.gd" type="Script" id=12]
 [ext_resource path="res://Actors/Portal.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Actors/LevelDust.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Actors/DialogTrigger.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
@@ -21,10 +23,6 @@ extents = Vector2( 129, 12 )
 [sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
 extents = Vector2( 129, 12 )
-
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.296089, 0.5, 0.703911, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.893855, 1, 1, 1, 1, 1, 1, 1, 0.860335, 1, 1, 1, 0 )
 
 [node name="level_1" type="Node2D"]
 script = ExtResource( 12 )
@@ -42,6 +40,13 @@ process_mode = 0
 
 [node name="Barricade" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1664, 80 )
+
+[node name="Portal" parent="." instance=ExtResource( 13 )]
+margin_left = 1672.0
+margin_top = 32.0
+margin_right = 1696.0
+margin_bottom = 80.0
+to_level = "res://Levels/level_2.tscn"
 
 [node name="Terrain" type="StaticBody2D" parent="."]
 collision_mask = 0
@@ -309,8 +314,17 @@ shape = SubResource( 2 )
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 5 )]
 position = Vector2( 392, 112 )
 
+[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 464, 136 )
+
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 5 )]
-position = Vector2( 1112, 120 )
+position = Vector2( 1120, 120 )
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 1224, 168 )
+
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 1344, 80 )
 
 [node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 5 )]
 position = Vector2( 752, 88 )
@@ -335,68 +349,13 @@ position = Vector2( 1496, 8 )
 [node name="Spirit_Basic3" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 328, 96 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="LevelDust" parent="." instance=ExtResource( 14 )]
 
-[node name="back" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 1, 1, 1, 0.235294 )
-z_index = -100
-motion_scale = Vector2( 1.1, 1.1 )
-motion_mirroring = Vector2( 1000, 1000 )
+[node name="Triggers" type="Node" parent="."]
 
-[node name="AmbientDust" type="CPUParticles2D" parent="ParallaxBackground/back"]
-position = Vector2( 504, 136 )
-amount = 1000
-lifetime = 4.0
-preprocess = 4.0
-emission_shape = 2
-emission_rect_extents = Vector2( 500, 500 )
-direction = Vector2( 0, 0 )
-spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 4.0
-scale_amount = 0.5
-color_ramp = SubResource( 3 )
-
-[node name="mid" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 1, 1, 1, 0.133333 )
-motion_scale = Vector2( 1.2, 1.2 )
-motion_mirroring = Vector2( 1000, 1000 )
-
-[node name="AmbientDust" type="CPUParticles2D" parent="ParallaxBackground/mid"]
-position = Vector2( 504, 136 )
-amount = 1000
-lifetime = 4.0
-preprocess = 4.0
-emission_shape = 2
-emission_rect_extents = Vector2( 500, 500 )
-direction = Vector2( 0, 0 )
-spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 4.0
-color_ramp = SubResource( 3 )
-
-[node name="front" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 1, 1, 1, 0.0392157 )
-motion_scale = Vector2( 1.4, 1.4 )
-motion_mirroring = Vector2( 1000, 1000 )
-
-[node name="AmbientDust" type="CPUParticles2D" parent="ParallaxBackground/front"]
-position = Vector2( 504, 136 )
-amount = 1000
-lifetime = 4.0
-preprocess = 4.0
-emission_shape = 2
-emission_rect_extents = Vector2( 500, 500 )
-direction = Vector2( 0, 0 )
-spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 4.0
-scale_amount = 1.5
-color_ramp = SubResource( 3 )
-
-[node name="Portal" parent="." instance=ExtResource( 13 )]
-margin_left = 1672.0
-margin_top = 32.0
-margin_right = 1696.0
-margin_bottom = 80.0
-to_level = "res://Levels/_TestEnvironment.tscn"
+[node name="DialogTrigger" parent="Triggers" instance=ExtResource( 15 )]
+margin_left = 480.0
+margin_top = 88.0
+margin_right = 512.0
+margin_bottom = 136.0
+timeline_name = "TutPlatform"

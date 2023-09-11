@@ -24,7 +24,7 @@
 			"character": "character-1694287632.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Where am I?"
+			"text": "What is this place?"
 		},
 		{
 			"animation": "[Default]",
@@ -50,7 +50,7 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "One of my many chapels.\nHm… It looks like the spirits' negative energy has sealed the room.\nMeaning the exits should open once they’ve all been dealt with."
+			"text": "One of my many [wave amp=10 freq=4]many[/wave] chapels.\nHm… It looks like the spirits' negative energy has sealed the room.\nMeaning the exits should open once they’ve all been dealt with."
 		},
 		{
 			"character": "character-1694287632.json",
@@ -62,7 +62,7 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Considering the power I have [wave amp=10 freq=4]graciously[/wave] bestowed upon you...\nI think it’s fair to say they are trapped here with you.\nGo ahead and press [throw_input] to take aim, then again unleash your ability!"
+			"text": "Considering the power I have graciously bestowed upon you...\nI think it is fair to say they are the ones trapped here with you.\nGo ahead and press [throw_input] to take aim, then again to unleash your ability!"
 		},
 		{
 			"event_id": "dialogic_022",

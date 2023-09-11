@@ -24,7 +24,7 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "See?\nImpressive, I know."
+			"text": "Behold!\nI would understand if you are shocked by the divine spectacle that-"
 		},
 		{
 			"animation": "1-fade_in.gd",
@@ -104,7 +104,7 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "it is a [wave amp=10 freq=4]magical orb[/wave].\nAnd it is much more powerful than it looks!"
+			"text": "it is a [wave amp=10 freq=4]divine magical orb[/wave].\nAnd it is much more powerful than it looks!"
 		},
 		{
 			"character": "character-1694287632.json",

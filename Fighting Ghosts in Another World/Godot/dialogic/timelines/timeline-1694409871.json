@@ -1,0 +1,71 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh by the way.\nDo you see that floating thing over there?"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "TEEHEE",
+			"text": "Can I throw the balls at it?"
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You can hurl your orbs at-\n...\nYes.\nAnd then you can walk on its surface."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.5
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.5",
+		"file": "timeline-1694409871.json",
+		"name": "TutPlatform"
+	}
+}

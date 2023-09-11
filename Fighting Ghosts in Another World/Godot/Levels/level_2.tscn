@@ -1,43 +1,137 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/level_2.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Camera/CameraArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/LevelDust.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/Camera/Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Objects/Barricade.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Actors/Platforms/ghostly_platform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Actors/Platforms/PlatformGroup.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Actors/Objects/Sconce.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Actors/Spirits/Spirit_Basic.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/TempTerrain.gd" type="Script" id=11]
+[ext_resource path="res://Actors/Objects/Checkpoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Actors/Components/Pit.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Actors/Portal.tscn" type="PackedScene" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 72, 10 )
 
 [node name="level_2" type="Node2D"]
 script = ExtResource( 1 )
+song_name = "exploring"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0, 0, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 64, 136 )
 
 [node name="Terrain" type="StaticBody2D" parent="."]
 collision_mask = 0
 script = ExtResource( 11 )
 
 [node name="ColorRect7" type="ColorRect" parent="Terrain"]
-margin_right = 32.0
-margin_bottom = 200.0
+margin_top = -360.0
+margin_right = 88.0
+margin_bottom = 88.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect15" type="ColorRect" parent="Terrain"]
+margin_top = -480.0
+margin_right = 88.0
+margin_bottom = -408.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect19" type="ColorRect" parent="Terrain"]
+margin_left = 88.0
+margin_top = -480.0
+margin_right = 232.0
+margin_bottom = -456.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect14" type="ColorRect" parent="Terrain"]
+margin_left = 200.0
+margin_top = -184.0
+margin_right = 232.0
+margin_bottom = -168.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect20" type="ColorRect" parent="Terrain"]
+margin_left = 88.0
+margin_top = 136.0
+margin_right = 120.0
+margin_bottom = 152.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect18" type="ColorRect" parent="Terrain"]
+margin_left = 200.0
+margin_top = -56.0
+margin_right = 232.0
+margin_bottom = -40.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect17" type="ColorRect" parent="Terrain"]
+margin_left = 88.0
+margin_top = -360.0
+margin_right = 120.0
+margin_bottom = -344.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect21" type="ColorRect" parent="Terrain"]
+margin_left = -80.0
+margin_top = -360.0
+margin_bottom = -312.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect22" type="ColorRect" parent="Terrain"]
+margin_left = -80.0
+margin_top = -456.0
+margin_bottom = -408.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect11" type="ColorRect" parent="Terrain"]
+margin_left = 232.0
+margin_top = -184.0
+margin_right = 248.0
+margin_bottom = -96.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect13" type="ColorRect" parent="Terrain"]
+margin_left = 232.0
+margin_top = -480.0
+margin_right = 320.0
+margin_bottom = -240.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
+
+[node name="ColorRect12" type="ColorRect" parent="Terrain"]
+margin_left = 288.0
+margin_top = -240.0
+margin_right = 320.0
+margin_bottom = -56.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect9" type="ColorRect" parent="Terrain"]
-margin_left = 192.0
-margin_right = 224.0
-margin_bottom = 200.0
+margin_left = 232.0
+margin_top = -56.0
+margin_right = 320.0
+margin_bottom = 136.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="ColorRect8" type="ColorRect" parent="Terrain"]
-margin_left = 32.0
 margin_top = 136.0
-margin_right = 192.0
+margin_right = 88.0
 margin_bottom = 200.0
 color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 48, 88 )
+[node name="ColorRect16" type="ColorRect" parent="Terrain"]
+margin_left = 232.0
+margin_top = 136.0
+margin_right = 320.0
+margin_bottom = 200.0
+color = Color( 0.737255, 0.486275, 0.0901961, 1 )
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 process_mode = 0
@@ -47,40 +141,131 @@ process_mode = 0
 [node name="CameraArea" parent="CameraAreas" instance=ExtResource( 2 )]
 visible = false
 modulate = Color( 1, 1, 1, 0.631373 )
-margin_right = 1704.0
+margin_top = -480.0
+margin_right = 320.0
 margin_bottom = 180.0
 border_width = 2.0
 
 [node name="Platforms" type="Node" parent="."]
 
+[node name="PlatformGroup" parent="Platforms" instance=ExtResource( 8 )]
+position = Vector2( 160, 96 )
+
+[node name="ghostly_platform" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
+position = Vector2( 0, 8 )
+
+[node name="ghostly_platform2" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
+position = Vector2( -16, 8 )
+
+[node name="ghostly_platform7" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
+position = Vector2( 0, -56 )
+
+[node name="ghostly_platform8" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
+position = Vector2( -16, -56 )
+
+[node name="ghostly_platform5" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
+position = Vector2( 56, -24 )
+
+[node name="ghostly_platform6" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
+position = Vector2( 40, -24 )
+
+[node name="PlatformGroup2" parent="Platforms" instance=ExtResource( 8 )]
+position = Vector2( 160, 32 )
+
+[node name="ghostly_platform4" parent="Platforms/PlatformGroup2" instance=ExtResource( 7 )]
+position = Vector2( -48, -24 )
+
+[node name="ghostly_platform8" parent="Platforms/PlatformGroup2" instance=ExtResource( 7 )]
+position = Vector2( -8, -56 )
+
+[node name="PlatformGroup3" parent="Platforms" instance=ExtResource( 8 )]
+position = Vector2( 248, -112 )
+
+[node name="ghostly_platform9" parent="Platforms/PlatformGroup3" instance=ExtResource( 7 )]
+position = Vector2( 24, 24 )
+
+[node name="ghostly_platform10" parent="Platforms/PlatformGroup3" instance=ExtResource( 7 )]
+position = Vector2( 0, -8 )
+
+[node name="ghostly_platform11" parent="Platforms/PlatformGroup3" instance=ExtResource( 7 )]
+position = Vector2( 24, -40 )
+
+[node name="PlatformGroup4" parent="Platforms" instance=ExtResource( 8 )]
+position = Vector2( 112, -264 )
+
+[node name="ghostly_platform9" parent="Platforms/PlatformGroup4" instance=ExtResource( 7 )]
+position = Vector2( 0, 16 )
+
+[node name="ghostly_platform10" parent="Platforms/PlatformGroup4" instance=ExtResource( 7 )]
+position = Vector2( 40, 48 )
+
+[node name="ghostly_platform11" parent="Platforms/PlatformGroup4" instance=ExtResource( 7 )]
+position = Vector2( 40, -16 )
+
+[node name="ghostly_platform12" parent="Platforms/PlatformGroup4" instance=ExtResource( 7 )]
+position = Vector2( 80, -40 )
+
+[node name="ghostly_platform13" parent="Platforms/PlatformGroup4" instance=ExtResource( 7 )]
+position = Vector2( 40, -72 )
+
 [node name="Lights" type="Node" parent="."]
 
 [node name="Sconce16" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 64, 112 )
+position = Vector2( 112, 112 )
 
-[node name="Sconce17" parent="Lights" instance=ExtResource( 9 )]
-position = Vector2( 144, 112 )
+[node name="Sconce21" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 208, -80 )
+
+[node name="Sconce23" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 200, -208 )
+
+[node name="Sconce28" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 112, -384 )
+
+[node name="Sconce29" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 48, -384 )
+
+[node name="Sconce18" parent="Lights" instance=ExtResource( 9 )]
+position = Vector2( 48, 112 )
 
 [node name="Pits" type="Node" parent="."]
 
+[node name="Pit" parent="Pits" instance=ExtResource( 13 )]
+position = Vector2( 160, 208 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pits/Pit"]
+shape = SubResource( 1 )
+
 [node name="Checkpoints" type="Node" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 12 )]
+position = Vector2( 80, 136 )
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 12 )]
+position = Vector2( 216, -184 )
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="Spirit_Basic" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 192, -232 )
 
-[node name="back" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 1, 1, 1, 0.235294 )
-z_index = -100
-motion_scale = Vector2( 1.1, 1.1 )
-motion_mirroring = Vector2( 1000, 1000 )
+[node name="Spirit_Basic2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 160, -408 )
 
-[node name="mid" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 1, 1, 1, 0.133333 )
-motion_scale = Vector2( 1.2, 1.2 )
-motion_mirroring = Vector2( 1000, 1000 )
+[node name="Objects" type="Node" parent="."]
 
-[node name="font" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 1, 1, 1, 0.0392157 )
-motion_scale = Vector2( 1.4, 1.4 )
-motion_mirroring = Vector2( 1000, 1000 )
+[node name="Barricade" parent="Objects" instance=ExtResource( 5 )]
+position = Vector2( 24, 136 )
+can_open = false
+
+[node name="Barricade2" parent="Objects" instance=ExtResource( 5 )]
+position = Vector2( 16, -360 )
+
+[node name="Portal" parent="Objects" instance=ExtResource( 14 )]
+margin_left = -16.0
+margin_top = -408.0
+margin_right = 8.0
+margin_bottom = -360.0
+to_level = "res://Levels/_TestEnvironment.tscn"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]

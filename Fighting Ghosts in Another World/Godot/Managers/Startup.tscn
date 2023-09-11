@@ -4,4 +4,4 @@
 
 [node name="Startup" type="Node"]
 script = ExtResource( 1 )
-initial_scene = "res://Levels/level_1.tscn"
+initial_scene = "res://Levels/level_0.tscn"

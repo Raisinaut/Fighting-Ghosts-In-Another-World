@@ -58,6 +58,7 @@ func _ready():
 
 func _process(_delta):
 	if Global.dialog_is_active:
+		input_direction = 0
 		return
 	if Global.throw_tutorial_active:
 		return
@@ -157,7 +158,7 @@ func _physics_process(delta):
 				sprite.play("idle")
 			elif is_running and not is_landing:
 				# Scale animation speed to movement speed
-				var anim_speed = range_lerp(abs(velocity.x), 0, move_speed, 0.3, 1.0)
+				var anim_speed = range_lerp(abs(velocity.x), 0, move_speed, 0.6, 1.0)
 				sprite.speed_scale = anim_speed
 				
 				var moving_backwards = abs(velocity.x - input_direction) > 0
@@ -282,7 +283,6 @@ func charge_logic():
 		if is_on_floor() and $Stats.mp < $Stats.max_mp:
 			if $ChargeTimer.is_stopped():
 				$ChargeTimer.start()
-#				chargeParticles.emitting = true
 				sfx.charge.play()
 				movingReticle.set_enabled(false)
 			sfx.charge.pitch_scale = range_lerp($ChargeTimer.time_left, $ChargeTimer.wait_time, 0, 1 + $Stats.mp, 2 + $Stats.mp)
@@ -293,7 +293,6 @@ func charge_logic():
 	elif Input.is_action_just_released("charge"):
 		if not $ChargeTimer.is_stopped():
 			$ChargeTimer.stop()
-			chargeParticles.emitting = false
 			sfx.charge.stop()
 
 

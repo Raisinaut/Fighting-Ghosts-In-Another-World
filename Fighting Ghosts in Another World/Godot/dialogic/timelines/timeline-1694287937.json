@@ -48,7 +48,7 @@
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I know a many things...\nI am a goddess after all."
+			"text": "I know many things...\nI am a goddess after all."
 		},
 		{
 			"animation": "1-fade_in.gd",
@@ -110,11 +110,11 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "There are others in my world who have helped me in the past.\nMost didn't didn't think they were up to the task initially.\nBut I gifted them all [wave amp=10 freq=4]magical powers[/wave] and would do the same for you, Marta.\nThese powers would even be yours to keep."
+			"text": "There are others in my world who have helped me in the past.\nAt first, most didn't think they were up to the task.\nBut I gifted them all [wave amp=10 freq=4]magical powers[/wave] and would do the same for you, Marta.\nThese powers would even be yours to keep."
 		},
 		{
 			"animation": "pulse.gd",
-			"animation_length": 0.3,
+			"animation_length": 0.4,
 			"change_mirror_portrait": false,
 			"change_position": false,
 			"change_z_index": false,
@@ -149,13 +149,13 @@
 			"character": "character-1694287632.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Yes of course!"
+			"text": "Yes definitely!"
 		},
 		{
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Then let’s get you reincarnated shall we?"
+			"text": "Then let us reincarnate you, shall we?"
 		},
 		{
 			"event_id": "dialogic_022",

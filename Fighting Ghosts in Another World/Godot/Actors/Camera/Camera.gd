@@ -7,7 +7,7 @@ onready var player_node = get_tree().get_nodes_in_group("Player")[0]
 
 var current_area = null
 var zoom_tween : SceneTreeTween = null
-
+var target_offset := Vector2(0, -8)
 var _discard = null
 
 
@@ -25,7 +25,7 @@ func _physics_process(_delta):
 		tween_zoom(Vector2.ONE * 0.9, 0.5)
 	else:
 		tween_zoom(Vector2.ONE, 1)
-	global_position = player_node.global_position
+	global_position = player_node.global_position + target_offset
 
 
 func tween_zoom(zoom_vec : Vector2, duration : float = 1):

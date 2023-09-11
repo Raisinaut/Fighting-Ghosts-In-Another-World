@@ -35,3 +35,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		"FADE_OUT_SCREEN":
 			emit_signal("faded_out")
 			queue_free()
+
+func set_fade_color(new_color : Color):
+	background.color = new_color

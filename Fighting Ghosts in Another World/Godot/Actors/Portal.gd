@@ -17,5 +17,5 @@ func match_collision_to_reference():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
-		SceneChanger.goto_scene(to_level)
+		SceneChanger.goto_scene(to_level, false, Color.black)
 
