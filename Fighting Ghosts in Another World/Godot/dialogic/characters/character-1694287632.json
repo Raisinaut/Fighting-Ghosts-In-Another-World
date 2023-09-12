@@ -22,6 +22,10 @@
 		{
 			"name": "TEEHEE",
 			"path": "res://Assets/Portraits/Marta_TEEHEE.png"
+		},
+		{
+			"name": "Marta_IONO",
+			"path": "res://Assets/Portraits/Marta_IONO.png"
 		}
 	],
 	"scale": 3,

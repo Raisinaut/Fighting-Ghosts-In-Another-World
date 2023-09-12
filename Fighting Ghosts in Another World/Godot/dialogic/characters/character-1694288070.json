@@ -8,14 +8,18 @@
 	"name": "Meghana",
 	"nickname": "Meg",
 	"nickname_bool": true,
-	"offset_x": 0,
+	"offset_x": 20,
 	"offset_y": 0,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://Assets/Portraits/Meghara_Pride.png"
+		},
+		{
+			"name": "Madge",
+			"path": "res://Assets/Portraits/Meghara_Madge.png"
 		}
 	],
-	"scale": 100,
+	"scale": 3,
 	"theme": ""
 }

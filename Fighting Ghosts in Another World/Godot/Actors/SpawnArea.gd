@@ -3,6 +3,7 @@ extends ReferenceRect
 signal incremented_num_defeated
 signal all_defeated
 
+export var active = true setget set_active
 export var spawn_limit = 20
 export var max_active = 3
 export (PackedScene) var enemy_to_spawn = null
@@ -20,13 +21,20 @@ var _discard = null
 
 func _ready():
 	rng.randomize()
-	start_timer_varied()
+	set_active(active)
 
+func set_active(state):
+	active = state
+	if active:
+		start_timer_varied()
 
 # Creates an enemy instance if under limit
 func _on_SpawnTimer_timeout():
 	if enemy_to_spawn == null:
 		print("No enemy assigned to " + self.name)
+		return
+	
+	if not active:
 		return
 	
 	var active_enemy_count = get_tree().get_nodes_in_group(self.name).size()

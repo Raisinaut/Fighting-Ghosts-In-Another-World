@@ -9,6 +9,7 @@
 extents = Vector2( 24, 1 )
 
 [node name="Chandelier" type="Node2D"]
+z_index = -5
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true

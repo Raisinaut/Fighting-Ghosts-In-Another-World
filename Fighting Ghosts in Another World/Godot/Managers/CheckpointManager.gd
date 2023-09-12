@@ -5,15 +5,16 @@ var spawn_location := Vector2.ZERO
 
 
 func _ready():
-	SceneChanger.connect("scene_changed", self, "clear_checkpoint")
+	SceneChanger.connect("changing_scene", self, "clear_checkpoint")
 
 func set_current_checkpoint(c):
 	if current_checkpoint:
-		current_checkpoint.set_active(false)
+#		current_checkpoint.set_active(false)
+		pass
 	current_checkpoint = c
 
 func remove_checkpoint():
-	current_checkpoint.set_active(false)
+#	current_checkpoint.set_active(false)
 	current_checkpoint = null
 
 func get_checkpoint_position() -> Vector2:

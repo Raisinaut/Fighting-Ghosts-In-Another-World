@@ -9,6 +9,7 @@ export var automatic_invincibility := false
 export(float, 0.1, 3, 0.1) var invincibilty_duration = 2.0 # seconds
 
 var invincible = false setget set_invincible
+var i_timer : SceneTreeTimer = null
 var _discard = null
 
 
@@ -50,8 +51,8 @@ func set_invincible(state):
 func start_invincibility(duration : float = invincibilty_duration):
 	self.set_invincible(true)
 	# start invincibility timer
-	var t = get_tree().create_timer(duration)
-	t.connect("timeout", self, "set_invincible", [false])
+	i_timer = get_tree().create_timer(duration)
+	i_timer.connect("timeout", self, "set_invincible", [false])
 
 func _on_invincibility_started():
 	set_deferred("monitoring", false)

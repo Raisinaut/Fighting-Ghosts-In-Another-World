@@ -21,3 +21,4 @@ func _on_finished_throw_tutorial():
 
 func _on_all_enemies_defeated():
 	Global.start_dialog("FirstDoorUnlock")
+	get_node("%ExitBarricade").set_open(true)

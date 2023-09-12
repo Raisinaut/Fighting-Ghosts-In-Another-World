@@ -29,7 +29,7 @@
 		{
 			"character": "character-1694287632.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Default",
 			"text": "Am I... dead?"
 		},
 		{
@@ -41,7 +41,7 @@
 		{
 			"character": "character-1694287632.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Marta_IONO",
 			"text": "How do you know my name?"
 		},
 		{
@@ -49,6 +49,27 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "I know many things...\nI am a goddess after all."
+		},
+		{
+			"animation": "[No Animation]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
 		},
 		{
 			"animation": "1-fade_in.gd",
@@ -86,7 +107,7 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Marta...\nYou had such great potential but were sadly cut short of reaching it.\nI know that you will do great things if you take my offer. \nThough, I would have a favor to ask of you in return…"
+			"text": "You had such great potential, Marta.\nCruely, you were cut short of reaching it...\nI know that you will do great things if you take my offer. \nThough, I would have a favor to ask of you in return…"
 		},
 		{
 			"character": "character-1694287632.json",
@@ -110,7 +131,7 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "There are others in my world who have helped me in the past.\nAt first, most didn't think they were up to the task.\nBut I gifted them all [wave amp=10 freq=4]magical powers[/wave] and would do the same for you, Marta.\nThese powers would even be yours to keep."
+			"text": "There are others in my world who have helped me in the past.\nAt first, most didn't think they were up to the task either.\nBut I gifted them all [wave amp=10 freq=4]magical powers[/wave] and would do the same for you, Marta.\nThey would even be yours to keep."
 		},
 		{
 			"animation": "pulse.gd",
@@ -155,11 +176,11 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Then let us reincarnate you, shall we?"
+			"text": "Then let's commence your reincarnation!"
 		},
 		{
 			"event_id": "dialogic_022",
-			"transition_duration": 1
+			"transition_duration": 0.5
 		}
 	],
 	"metadata": {

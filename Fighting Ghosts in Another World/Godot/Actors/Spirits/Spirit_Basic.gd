@@ -22,7 +22,7 @@ var target : Node2D = null
 var revealed := false setget set_revealed
 var aggressive := false
 # Movement Parameters
-var max_speed := 35
+var max_speed := 30
 var max_chase_distance := 300
 var max_target_distance := 200
 

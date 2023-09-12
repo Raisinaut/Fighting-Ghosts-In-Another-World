@@ -2,7 +2,7 @@ extends StaticBody2D
 
 signal open_set
 
-export var can_open := true
+export var start_open = false
 
 onready var sprite = $Sprite
 onready var collision := $CollisionShape2D
@@ -15,10 +15,10 @@ var _discard = null
 
 
 func _ready():
-	set_open(false)
-	if can_open:
-		_discard = GlobalEnemyLogic.connect("all_enemies_defeated", self, "set_open", [true])
-
+	if start_open:
+		set_open(true)
+	else:
+		set_open(false)
 
 func set_open(state):
 	open = state

@@ -30,7 +30,7 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "You handled that mob quite easily.\nAll the souls from those spirits seem to have significantly strengthened your own."
+			"text": "You handled that mob quite well.\nAnd it seems all the souls from those spirits have significantly strengthened your own."
 		},
 		{
 			"animation": "[Default]",
@@ -65,10 +65,10 @@
 			"text": "You are indeed a strange one."
 		},
 		{
-			"character": "",
+			"character": "character-1694489811.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "BTW this is all there is so far.\nSo you can close the window if you want."
+			"text": "And... that's all there is so far!\nI hope you enjoyed playing!\nThe level will reset if you fall enough, so feel free to keep on fighting ghosts!"
 		},
 		{
 			"event_id": "dialogic_022",

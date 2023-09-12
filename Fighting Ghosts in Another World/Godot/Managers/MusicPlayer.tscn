@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Managers/MusicPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/Music/REBORN - Tomorrow, We Die OGG (Loopable).ogg" type="AudioStream" id=2]
-[ext_resource path="res://Assets/Audio/Music/REBORN - Battle for Mana OGG (Loopable).ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/Music/REBORN - Battle for Mana OGG (Short) (Loopable).ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/Music/REBORN - Lingering Evil OGG (Loopable).ogg" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Audio/Music/Mystical Town (Loop).ogg" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Audio/Music/REBORN - Thoughts OGG (Loopable).ogg" type="AudioStream" id=6]

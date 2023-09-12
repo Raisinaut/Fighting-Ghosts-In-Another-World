@@ -12,21 +12,15 @@ func match_reference_rect():
 	collision.shape.extents = get_rect().size / 2
 	collision.position = collision.shape.extents
 
-func get_limit_rect() -> Rect2:
-	var limit_rect = Rect2()
-	var shape_extents = collision.shape.extents
-	limit_rect.position = collision.global_position - shape_extents
-	limit_rect.end = collision.global_position + shape_extents
-	return limit_rect
 
 func get_limit_left():
-	return get_limit_rect().position.x
+	return rect_global_position.x
 func get_limit_top():
-	return get_limit_rect().position.y
+	return rect_global_position.y
 func get_limit_right():
-	return get_limit_rect().end.x
+	return rect_size.x
 func get_limit_bottom():
-	return get_limit_rect().end.y
+	return rect_size.y
 
 
 func get_zoom_scale():

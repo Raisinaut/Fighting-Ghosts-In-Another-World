@@ -74,9 +74,30 @@
 			"text": "Oh wow!\nA ball!"
 		},
 		{
+			"animation": "headshake.gd",
+			"animation_length": 0.5,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Madge",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "No!"
 		},
 		{
@@ -113,10 +134,31 @@
 			"text": "Okay!"
 		},
 		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "By the way, make sure your mana is always topped up.\nHold [charge_input] to restore it.\nConveniently, successful hits will restore some mana too.\nAlso if you need to jump, just press [jump_input].\nNow please run along and cleanse my chapel."
+			"text": "By the way, make sure to top up your mana.\nHold [charge_input] to restore it.\nSuccessful hits will recover some as well.\nAlso if you need to jump, just press [jump_input].\nNow please run along and cleanse my chapel."
 		},
 		{
 			"event_id": "dialogic_022",

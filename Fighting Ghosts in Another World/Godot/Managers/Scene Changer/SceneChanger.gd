@@ -57,6 +57,6 @@ func reload_current_scene():
 
 func get_current_scene():
 	var root_children = get_tree().get_root().get_children()
-	var number_of_singletons = 5
-	var current_scene = root_children[number_of_singletons]
+	var singletons = 5
+	var current_scene = root_children[singletons]
 	return current_scene

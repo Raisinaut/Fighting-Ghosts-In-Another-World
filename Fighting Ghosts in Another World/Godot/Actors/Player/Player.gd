@@ -17,6 +17,7 @@ onready var collisionShape = $CollisionShape2D
 onready var sfx = $SFX
 onready var hurtbox = $HurtBox
 
+export(int, -1, 1) var initial_facing = 0
 export(int, 0, 200, 5) var move_speed := 80
 export(int, 200, 1000, 10) var move_accel := 2000
 export(int, 500, 1000, 10) var friction := 400
@@ -52,6 +53,7 @@ var state = STATES.MOVE setget set_state
 
 
 func _ready():
+	face_towards(initial_facing)
 	CheckpointManager.spawn_location = global_position
 	GlobalEnemyLogic.player_node = self
 
@@ -185,8 +187,6 @@ func set_state(s):
 			take_damage(1)
 			if $Stats.hp > 0:
 				set_state(STATES.RESPAWN)
-#			else:
-#				set_state(STATES.DEAD)
 			hide() # PLACEHOLDER
 			
 		STATES.RESPAWN:

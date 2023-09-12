@@ -79,6 +79,7 @@ layer = 128
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
 anims/FADE_IN_SCREEN = SubResource( 6 )
 anims/FADE_LOAD = SubResource( 4 )
 anims/FADE_OUT_SCREEN = SubResource( 7 )

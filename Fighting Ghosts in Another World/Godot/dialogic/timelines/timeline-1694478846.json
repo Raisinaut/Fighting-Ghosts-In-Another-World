@@ -1,0 +1,146 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Careful.\nI'm sensing a lot of spirits in this room."
+		},
+		{
+			"animation": "shake_x.gd",
+			"animation_length": 0.5,
+			"change_mirror_portrait": true,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": true,
+			"portrait": "(Don't change)",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "Madge",
+			"text": "[br][font=res://UI/Fonts/dialog_small.tres]They probably just gathered here out of spite.[/font]"
+		},
+		{
+			"animation": "instant_in.gd",
+			"animation_length": 0,
+			"change_mirror_portrait": true,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Defeating them may not be a simple task.\nIn case you haven't already realized, taking aim while airborne increases your reaction time.\nThat should give you an edge."
+		},
+		{
+			"animation": "pulse.gd",
+			"animation_length": 0.4,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "TEEHEE",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694287632.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Don't worry Meg, I've got this!"
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Didn't take long for you to get overconfident.\nGood luck Marta..."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.5
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.5",
+		"file": "timeline-1694478846.json",
+		"name": "ArenaStart"
+	}
+}

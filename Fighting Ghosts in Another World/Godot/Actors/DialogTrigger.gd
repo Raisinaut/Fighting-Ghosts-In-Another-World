@@ -1,8 +1,11 @@
 extends ReferenceRect
 
 export var timeline_name : String = ""
+export var one_shot := true
 
 onready var collision = $Area2D/CollisionShape2D
+
+var triggered := false
 
 
 func _ready():
@@ -15,5 +18,8 @@ func match_collision_to_reference():
 	collision.global_position = center
 
 func _on_Area2D_body_entered(_body):
+	if one_shot and triggered:
+		return
 	if timeline_name != "":
+		triggered = true
 		Global.start_dialog(timeline_name)

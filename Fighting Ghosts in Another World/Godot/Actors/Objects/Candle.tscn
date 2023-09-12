@@ -49,3 +49,4 @@ position = Vector2( 0, -8 )
 texture = SubResource( 6 )
 texture_scale = 0.4
 mode = 2
+shadow_enabled = true

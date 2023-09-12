@@ -56,7 +56,61 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "You can hurl your orbs at-\n...\nYes.\nAnd then you can walk on its surface."
+			"text": "You can hurl your orbs at-"
+		},
+		{
+			"animation": "shake_x.gd",
+			"animation_length": 0.5,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Madge",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "..."
+		},
+		{
+			"animation": "[No Animation]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yes.\nAnd then you can walk on its surface."
 		},
 		{
 			"event_id": "dialogic_022",
