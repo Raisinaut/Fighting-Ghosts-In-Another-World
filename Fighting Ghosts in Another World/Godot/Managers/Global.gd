@@ -17,7 +17,7 @@ func set_throw_tutorial_finished(state : bool):
 	if throw_tutorial_finished == state:
 		return
 	throw_tutorial_finished = state
-	emit_signal("finished_throw_tutorial")
+	emit_signal("finished_throw_tutorial", throw_tutorial_finished)
 
 func start_dialog(timeline_name):
 	var dialog = Dialogic.start(timeline_name)

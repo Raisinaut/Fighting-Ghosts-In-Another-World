@@ -13,21 +13,17 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://Assets/Portraits/Marta_default.png"
-		},
-		{
-			"name": "",
-			"path": ""
+			"path": "res://Assets/Portraits/Marta_default_small.png"
 		},
 		{
 			"name": "TEEHEE",
-			"path": "res://Assets/Portraits/Marta_TEEHEE.png"
+			"path": "res://Assets/Portraits/Marta_TEEHEE_small.png"
 		},
 		{
 			"name": "Marta_IONO",
-			"path": "res://Assets/Portraits/Marta_IONO.png"
+			"path": "res://Assets/Portraits/Marta_IONO_small.png"
 		}
 	],
-	"scale": 3,
+	"scale": 12,
 	"theme": ""
 }
