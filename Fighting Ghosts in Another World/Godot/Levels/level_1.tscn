@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Actors/Spirits/Spirit_Basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Camera/CameraArea.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Actors/Portal.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Actors/LevelDust.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Actors/DialogTrigger.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UI/Tip.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
@@ -27,6 +28,8 @@ extents = Vector2( 129, 12 )
 [node name="level_1" type="Node2D"]
 script = ExtResource( 12 )
 song_name = "exploring"
+
+[node name="TipLayer" parent="." instance=ExtResource( 16 )]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

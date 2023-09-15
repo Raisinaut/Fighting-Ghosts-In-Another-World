@@ -134,7 +134,7 @@
 			"text": "Okay!"
 		},
 		{
-			"animation": "[Default]",
+			"animation": "[No Animation]",
 			"animation_length": 0,
 			"change_mirror_portrait": false,
 			"change_position": false,

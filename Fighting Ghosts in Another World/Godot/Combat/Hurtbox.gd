@@ -52,7 +52,7 @@ func start_invincibility(duration : float = invincibilty_duration):
 	self.set_invincible(true)
 	# start invincibility timer
 	i_timer = get_tree().create_timer(duration)
-	i_timer.connect("timeout", self, "set_invincible", [false])
+	_discard = i_timer.connect("timeout", self, "set_invincible", [false])
 
 func _on_invincibility_started():
 	set_deferred("monitoring", false)

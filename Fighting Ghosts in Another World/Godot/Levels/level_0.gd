@@ -14,10 +14,11 @@ func _ready():
 	dialog.connect("timeline_end", self, "_on_timeline_end")
 
 
-func _on_timeline_end(_timeline_name):
-	MusicPlayer.end_song()
-	yield(get_tree().create_timer(MusicPlayer.fade_time), "timeout")
-	SceneChanger.goto_scene(next_scene)
+func _on_timeline_end(timeline_name):
+	if timeline_name == "Introduction":
+		MusicPlayer.end_song()
+		yield(get_tree().create_timer(MusicPlayer.fade_time), "timeout")
+		SceneChanger.goto_scene(next_scene)
 
 
 func _process(delta):

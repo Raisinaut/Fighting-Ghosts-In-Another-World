@@ -38,8 +38,7 @@ frame_1/delay_sec = 0.0
 
 [node name="Candle" type="AnimatedSprite"]
 frames = SubResource( 5 )
-frame = 2
-playing = true
+frame = 1
 offset = Vector2( 0, -4 )
 script = ExtResource( 2 )
 

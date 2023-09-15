@@ -14,12 +14,19 @@ func _ready():
 	$CanvasModulate.visible = true
 	
 	if not Global.throw_tutorial_finished:
-		Global.start_dialog("TutThrowA")
+		Global.start_dialog("TutThrowA").connect("timeline_end", self, "_on_timeline_end")
 		Global.throw_tutorial_active = true
+		
+
+func _on_timeline_end(timeline_name):
+	if timeline_name == "TutThrowA":
+		$TipLayer.set_text("throw_tip")
+		$TipLayer.visible = true
 
 func _on_finished_throw_tutorial(finished):
 	if finished:
 		Global.start_dialog("TutThrowB")
+		$TipLayer.visible = false
 
 func _on_all_enemies_defeated():
 	Global.start_dialog("FirstDoorUnlock")

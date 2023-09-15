@@ -117,11 +117,47 @@ position = Vector2( 96, 88 )
 [node name="Chain" parent="Lights/Chandelier" index="0"]
 position = Vector2( 0, -64 )
 
+[node name="Candle" parent="Lights/Chandelier/CandleHolder/Candles" index="0"]
+frame = 2
+
+[node name="Candle2" parent="Lights/Chandelier/CandleHolder/Candles" index="1"]
+frame = 2
+
+[node name="Candle3" parent="Lights/Chandelier/CandleHolder/Candles" index="2"]
+frame = 2
+
+[node name="Candle4" parent="Lights/Chandelier/CandleHolder/Candles" index="3"]
+frame = 2
+
+[node name="Candle5" parent="Lights/Chandelier/CandleHolder/Candles" index="4"]
+frame = 2
+
+[node name="Candle6" parent="Lights/Chandelier/CandleHolder/Candles" index="5"]
+frame = 2
+
 [node name="Chandelier2" parent="Lights" instance=ExtResource( 5 )]
 position = Vector2( 224, 88 )
 
 [node name="Chain" parent="Lights/Chandelier2" index="0"]
 position = Vector2( 0, -64 )
+
+[node name="Candle" parent="Lights/Chandelier2/CandleHolder/Candles" index="0"]
+frame = 2
+
+[node name="Candle2" parent="Lights/Chandelier2/CandleHolder/Candles" index="1"]
+frame = 2
+
+[node name="Candle3" parent="Lights/Chandelier2/CandleHolder/Candles" index="2"]
+frame = 2
+
+[node name="Candle4" parent="Lights/Chandelier2/CandleHolder/Candles" index="3"]
+frame = 2
+
+[node name="Candle5" parent="Lights/Chandelier2/CandleHolder/Candles" index="4"]
+frame = 2
+
+[node name="Candle6" parent="Lights/Chandelier2/CandleHolder/Candles" index="5"]
+frame = 2
 
 [node name="Pits" type="Node" parent="."]
 

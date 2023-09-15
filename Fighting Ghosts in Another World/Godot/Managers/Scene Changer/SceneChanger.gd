@@ -11,6 +11,7 @@ export var max_load_time = 10000
 export var LoadingScreen : PackedScene = null
 
 var current_scene_path := ""
+var scene_is_changing := false
 
 # Caller nodes must pass "self" as the current_scene
 func goto_scene(path : String, show_loading_progress := false, fade_color := Color.black):
@@ -22,6 +23,7 @@ func goto_scene(path : String, show_loading_progress := false, fade_color := Col
 		return
 	
 	emit_signal("changing_scene")
+	scene_is_changing = true
 	
 	var loading_screen = LoadingScreen.instance()
 	get_tree().get_root().call_deferred("add_child", loading_screen)
@@ -41,6 +43,7 @@ func goto_scene(path : String, show_loading_progress := false, fade_color := Col
 			loading_screen.fade_out()
 			yield(loading_screen, "faded_out")
 			emit_signal("scene_changed")
+			scene_is_changing = false
 			break
 		elif err == OK:
 			#Still loading
@@ -57,6 +60,6 @@ func reload_current_scene():
 
 func get_current_scene():
 	var root_children = get_tree().get_root().get_children()
-	var singletons = 5
+	var singletons = 6
 	var current_scene = root_children[singletons]
 	return current_scene

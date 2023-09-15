@@ -12,6 +12,7 @@ func _ready():
 	frame = rng.randi_range(0, anim_frame_count - 1)
 	flip_h = bool(rng.randi_range(0, 1))
 	$Light2D.texture.fps = rng.randi() % 3 + 2
+	playing = true
 	
 	
 # brings it forward on top of characters

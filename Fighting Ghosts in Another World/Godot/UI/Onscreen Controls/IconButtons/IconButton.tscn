@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Onscreen Controls/IconButtons/IconButton.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 256.0
+
+[node name="IconButton" type="TouchScreenButton"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+scale = Vector2( 0.0625, 0.0625 )
+shape = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Action is set with node name."
+}
