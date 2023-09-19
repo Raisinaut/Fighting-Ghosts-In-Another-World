@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+
 signal active_state_changed
 
 onready var revertedSprite = $Reverted
@@ -23,9 +24,6 @@ var timer = 0
 var _discard = null
 
 
-
-#func _ready():
-#	set_active(false)
 
 func _process(delta):
 	if active:
@@ -83,6 +81,12 @@ func reset_values(height):
 	detectionCollision.position.y = height / 2.0
 	light.scale = Vector2.ONE
 	light.energy = light_energy_initial
+
+
+func set_relative_volumes(amount_db : float):
+	$Loop.volume_db += amount_db
+	$Activate.volume_db += amount_db
+	$Deactivate.volume_db += amount_db
 
 
 func flash():
