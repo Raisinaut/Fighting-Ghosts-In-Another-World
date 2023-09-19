@@ -13,6 +13,8 @@ export var LoadingScreen : PackedScene = null
 var current_scene_path := ""
 var scene_is_changing := false
 
+
+
 # Caller nodes must pass "self" as the current_scene
 func goto_scene(path : String, show_loading_progress := false, fade_color := Color.black):
 	var current_scene = get_current_scene()

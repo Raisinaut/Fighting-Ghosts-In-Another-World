@@ -40,7 +40,7 @@ func _ready():
 #	self.connect("device_changed", self, "update_dialogic_variables")
 
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("skip_dialog"):
 		end_dialog()
 
 # Tell Dialogic to start a timeline
