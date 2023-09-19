@@ -72,42 +72,6 @@ position = Vector2( 48, -24 )
 [node name="ghostly_platform6" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
 position = Vector2( 32, -24 )
 
-[node name="ghostly_platform3" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( 0, 8 )
-
-[node name="ghostly_platform4" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( -16, 8 )
-
-[node name="ghostly_platform9" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( 0, -56 )
-
-[node name="ghostly_platform10" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( -16, -56 )
-
-[node name="ghostly_platform11" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( 48, -24 )
-
-[node name="ghostly_platform12" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( 32, -24 )
-
-[node name="ghostly_platform13" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( 0, 8 )
-
-[node name="ghostly_platform14" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( -16, 8 )
-
-[node name="ghostly_platform15" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( 0, -56 )
-
-[node name="ghostly_platform16" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( -16, -56 )
-
-[node name="ghostly_platform17" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( 48, -24 )
-
-[node name="ghostly_platform18" parent="Platforms/PlatformGroup" instance=ExtResource( 7 )]
-position = Vector2( 32, -24 )
-
 [node name="PlatformGroup2" parent="Platforms" instance=ExtResource( 8 )]
 position = Vector2( 160, 24 )
 
