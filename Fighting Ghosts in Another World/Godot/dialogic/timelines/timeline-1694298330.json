@@ -63,7 +63,7 @@
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Considering the power I have graciously bestowed upon you...\nI think it is fair to say they are the ones trapped here with you.\nGo ahead and press [throw_input] to take aim, then again to unleash your ability!"
+			"text": "Considering the power I have graciously bestowed upon you...\nI think it is fair to say they are the ones trapped here with you.\nGo ahead and [throw_input] to take aim, then again to unleash your ability!"
 		},
 		{
 			"event_id": "dialogic_022",

@@ -2,7 +2,8 @@ extends CanvasLayer
 
 onready var label = get_node("%TipLabel")
 
-var throw_tip = "Press " + InputMap.get_action_list("throw")[0].as_text() + " to Aim/Throw"
+# tagged tips
+onready var throw_tip = Dialogic.get_variable("throw_input") + " to Aim/Throw"
 
 
 func _ready():
@@ -10,4 +11,5 @@ func _ready():
 
 func set_text(tag : String):
 	var new_text = get(tag)
+	new_text[0] = new_text[0].to_upper()
 	label.text = new_text

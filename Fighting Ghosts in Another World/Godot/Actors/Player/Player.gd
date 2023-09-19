@@ -222,24 +222,30 @@ func set_state(s):
 
 # Sets input direction and starts buffer timers
 func _unhandled_input(event):
+	# Return is dialog is onscreen
 	if Global.dialog_is_active:
 		return
 	
+	# Return if in any state but MOVE
 	if state != STATES.MOVE:
 		return
 	
+	# Return if charging
 	if not $ChargeTimer.is_stopped():
 		return
 	
 	# Throw
-	if $Stats.mp > 0:
-		if event.is_action("throw") and Input.is_action_just_pressed("throw"):
+	if event.is_action("throw") and Input.is_action_just_pressed("throw"):
+		# Has enough mana
+		if $Stats.enough_mp(1):
+			# Enable reticle on first press
 			if not movingReticle.enabled:
 				if not is_on_floor():
 					set_bullet_time(true)
 				movingReticle.set_enabled(true)
+			# Throw projectile on second press
 			else:
-				$Stats.mp -= 1
+				$Stats.consume_mp(1)
 				var m = instance_scene(projectile)
 				m.global_position = self.global_position + movingReticle.reticle_offset
 				m.direction = movingReticle.get_direction()
@@ -250,12 +256,12 @@ func _unhandled_input(event):
 				if Global.throw_tutorial_active:
 					Global.throw_tutorial_finished = true
 					Global.throw_tutorial_active = false
-			
-		elif Input.is_action_pressed("cancel_throw"):
-			movingReticle.set_enabled(false)
-			set_bullet_time(false)
+	# Cancel throw
+	elif Input.is_action_pressed("cancel_throw"):
+		movingReticle.set_enabled(false)
+		set_bullet_time(false)
 	
-	
+	# Temporarily disallow jumping during tutorial
 	if Global.throw_tutorial_active:
 		return
 		

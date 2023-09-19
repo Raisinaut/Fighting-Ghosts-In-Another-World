@@ -134,9 +134,9 @@
 			"text": "Okay!"
 		},
 		{
-			"animation": "[No Animation]",
+			"animation": "instant_in.gd",
 			"animation_length": 0,
-			"change_mirror_portrait": false,
+			"change_mirror_portrait": true,
 			"change_position": false,
 			"change_z_index": false,
 			"character": "character-1694288070.json",
@@ -149,7 +149,7 @@
 				"1": false,
 				"2": false,
 				"3": false,
-				"4": false
+				"4": true
 			},
 			"type": 2,
 			"z_index": 0
@@ -157,8 +157,14 @@
 		{
 			"character": "character-1694288070.json",
 			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "If it's ever [wave amp=10 freq=4]too powerful[/wave] for you, you can always [cancel_input] to cancel an attack..."
+		},
+		{
+			"character": "character-1694288070.json",
+			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "By the way, make sure to top up your mana.\nHold [charge_input] to restore it.\nSuccessful hits will recover some as well.\nAlso if you need to jump, just press [jump_input].\nNow please run along and cleanse my chapel."
+			"text": "By the way, make sure to top up your mana.\nJust [charge_input] to restore it.\nSuccessful hits will recover some as well.\nAlso if you need to jump, just [jump_input].\nNow please run along and cleanse my chapel."
 		},
 		{
 			"event_id": "dialogic_022",

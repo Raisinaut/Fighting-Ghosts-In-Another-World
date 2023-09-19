@@ -7,6 +7,7 @@ export var max_mp : int = 3
 
 onready var mp : int = max_mp setget set_mp # set onready to keep export value
 onready var restoreMP := $RestoreMP
+onready var lackingMP = $LackingMP
 onready var restoreParticles := $RestoreParticles
 
 var _discard = null
@@ -34,6 +35,15 @@ func set_mp(value):
 	if mp == max_mp:
 		emit_signal("mp_full")
 
+
+func enough_mp(value):
+	var enough = true
+	if mp - value < 0:
+		enough = false
+		lackingMP.play_at_random_pitch()
+	return enough
+func consume_mp(value):
+	set_mp(mp - value)
 func restore_mp(value):
 	set_mp(mp + value)
 
