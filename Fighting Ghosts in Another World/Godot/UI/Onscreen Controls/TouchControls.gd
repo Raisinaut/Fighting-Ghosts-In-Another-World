@@ -11,6 +11,7 @@ var enabled = false setget set_enabled
 
 func _ready():
 	self.enabled = OS.has_feature("mobile")
+	visible = enabled
 	$GestureMenu.set_menu_active(false)
 
 
@@ -20,6 +21,9 @@ func set_enabled(state):
 
 
 func _process(_delta):
+	if not OS.has_feature("mobile"):
+		return
+	
 	var d = Global.dialog_is_active
 	var s = SceneChanger.scene_is_changing
 	var t = Global.throw_tutorial_active
