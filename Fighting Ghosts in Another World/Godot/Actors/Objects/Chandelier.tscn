@@ -32,27 +32,21 @@ texture = ExtResource( 1 )
 
 [node name="Candle" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
 position = Vector2( -22, 13 )
-frame = 1
 
 [node name="Candle2" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
 position = Vector2( -16, 13 )
-frame = 1
 
 [node name="Candle3" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
 position = Vector2( -6, 13 )
-frame = 1
 
 [node name="Candle4" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
 position = Vector2( 6, 13 )
-frame = 1
 
 [node name="Candle5" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
 position = Vector2( 16, 13 )
-frame = 1
 
 [node name="Candle6" parent="CandleHolder/Candles" instance=ExtResource( 2 )]
 position = Vector2( 22, 13 )
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CandleHolder"]
 position = Vector2( 0, 14 )
